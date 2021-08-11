@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['TEST.py'],
-             pathex=['C:\\Users\\PDAL-BM-1\\PycharmProjects\\windows'],
+             pathex=['C:\\Users\\PDAL-BM-1\\PycharmProjects\\pdal_window'],
              binaries=[],
              datas=[],
              hiddenimports=[],

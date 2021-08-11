@@ -1,6 +1,6 @@
 import win32com.client as win32
 import globals_var as gvar
-import TEST
+import FINAL
 import Window_Catia as wc
 
 
