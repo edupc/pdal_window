@@ -442,6 +442,7 @@ class Create(QtWidgets.QMainWindow, creat):
         my_validator = QtGui.QRegExpValidator(my_regex, self.ui.lineEdit_Quantity)
         self.ui.lineEdit_Quantity.setValidator(my_validator)
         self.lines = []
+
     def insert_table(self):
 
         h = self.ui.lineEdit_H.text()
@@ -569,7 +570,7 @@ class Create(QtWidgets.QMainWindow, creat):
             gvar.small_height = float(self.ui.lineEdit_W.text()) / 2 - 49
             gvar.small_width = float(self.ui.lineEdit_H.text()) - 76.49
             gvar.small2_width = float(self.ui.lineEdit_H.text()) - 48.19
-            # gvar.Quantity  = float(self.ui.lineEdit_Quantity())
+            gvar.Quantity  = float(self.ui.lineEdit_Quantity())
             print(gvar.width,gvar.height,gvar.Quantity)
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:
@@ -583,6 +584,7 @@ class Create(QtWidgets.QMainWindow, creat):
         else:
             self.reply = QMessageBox.question(self, "錯誤", "設定未完成", QMessageBox.Yes)
             print('No_Set_All')
+
 
     def close(self):
         self.hide()
