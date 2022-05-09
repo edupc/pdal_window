@@ -1,348 +1,290 @@
-# import os,sys,win32
-# # import win32com.client as win32com
-# from PyQt5 import QtWidgets, QtGui, QtCore, Qt
-# from PyQt5.QtWidgets import QMessageBox, QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView
-# import Window_Catia as wc
-# from bom import Excel_Bom
-# import globals_var as gvar
-# import drafting as draft
-# import drafting_Part as drafting_p
-# import drafting_Dim as drafting_d
-# from untitled import Ui_MainWindow, creat,Window_dwg,about
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtCore import *
-# import win32com.client as win32
-# from PyQt5.QtGui import *
-#
-# #---------------------------------------------------------------資料空串列
-# # window_gen_data = []
-# # draft_gen_data = []#標題欄輸入值
-# # bom_gen_data = {}#bom表輸入值
-# # bom_whd_value = []
-# # bom_edit = []
+import os, sys, win32
+
+from PyQt5 import QtWidgets, QtGui, QtCore, Qt
+from PyQt5.QtWidgets import QMessageBox, QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView
+import Window_Catia as wc
+from bom import Excel_Bom
+import globals_var as gvar
+import drafting as draft
+import drafting_Part as drafting_p
+import drafting_Dim as drafting_d
+from untitled import Ui_MainWindow, creat, Window_dwg, about
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+import time
+
+# # class qweasd() :
+# #     def create_window(self):
+# #         system_root = os.path.dirname(os.path.realpath(__file__))
+# #         gvar.system_root = system_root
+# #         # app = QtWidgets.QApplication([])
+# #         # window = MainWindow()
+# #         # window.show()
+# #         # sys.exit(app.exec_())
+# #         show_name_1 = ["following.1", 'left.1', 'right.1', 'top.1', 'small_top.1', 'small_left.1', 'small_right.1',
+# #                        'small_following.1', 'wheel_1.1', 'wheel_2.1', 'small2_top.1', 'small2_left.1', 'small2_right.1',
+# #                        'small2_following.1', 'wheel_3.1', 'wheel_4.1']
+# #         show_name_2 = ["following", 'left', 'right', 'top', 'small_top', 'small_left', 'small_right', 'small_following',
+# #                        'wheel_1', 'wheel_2', 'small2_top', 'small2_left', 'small2_right', 'small2_following', 'wheel_3',
+# #                        'wheel_4']
 # #
-# # def qwe():
-# # # #     full_save = str("C:\\Users\\PDAL-BM-1\\PycharmProjects\\windows\\Standard_window\\")
-# # # #     for j in range(1, 29):
-# # # #         wc.assembly_open_file(full_save, "Standard_%s"% j, 0)
-# # #     for k in range(1,3):
-# # #         wc.saveas_specify_target('C:\\Users\\PDAL-BM-1\\Desktop\\', "Product%s" % k,'.Product')
-# # # qwe()
-# # # # for k in range(1,3):
-# # #     wc.saveas_specify_target('C:\\Users\\PDAL-BM-1\\Desktop\\', "Product%s",'.Product')%k
-# # # gvar.system_root = system_root
-# # full_save = str("C:\\Users\\PDAL-BM-1\\PycharmProjects\\windows\\Standard_window\\")
-# # for j in range(1, 29):
-# #     wc.part_open("Standard_%s" % j, gvar.system_root + "\\Standard_window")
-# #     wc.saveas_specify_target(gvar.full_save_dir, "Standard_%s" % j, 'CATPart')
-# #     # wc.assembly_open_file(full_save, "Standard_%s" % j, 0)
-# #-----------------------------------------------------------------------------------
-# # a=['catat','asasfa','asfasf']
+# #         print(gvar.width, gvar.height)
+# #         env = wc.set_CATIA_workbench_env()
+# #         env.Generative_Sheetmetal_Design()
 # #
-# # for i in a :
-# #     print(i)
-# # a.clear()
-# # print(a)
+# #         wc.part_open("following", gvar.system_root + "\\big_window")
+# #         wc.Sideplate_param_change("width", gvar.width_W)
+# #         wc.Zoom_view()
+# #         wc.part_open("left", gvar.system_root + "\\big_window")
+# #         wc.Sideplate_param_change("height", gvar.height_H)
+# #         wc.Zoom_view()
+# #         wc.part_open("right", gvar.system_root + "\\big_window")
+# #         wc.Sideplate_param_change("height", gvar.height_H)
+# #         wc.Zoom_view()
+# #         wc.part_open("top", gvar.system_root + "\\big_window")
+# #         wc.Sideplate_param_change("width", gvar.width_W)
+# #         wc.Zoom_view()
 # #
-# # a=['rwere','werwe','ewrewr']
-# # for i in a :
-# #     print(i)
-# # a=['catat','asasfa','asfasf']
-# # for i in a :
-# #     print(a)
-# # print(i)
+# #         if self.route == '':
+# #             gvar.full_save_dir = wc.save_dir(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop'))
+# #         else:
+# #             gvar.full_save_dir = wc.save_dir(self.route)
+# #         self.full_save_dir = gvar.full_save_dir
+# #         print("%s" % self.full_save_dir)
+# #         self.catia_save = ['top', 'right', 'following', 'left']
+# #         self.small_catia_save = ['small_top', 'small_left', 'small_right', 'small_following', 'wheel_1', 'wheel_2']
+# #         self.small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right', 'wheel_3',
+# #                                   'wheel_4']  # ,'wheel_1','wheel_2']
+# #         self.AL_Window = ['Product1', 'Product2', 'Product3']
 # #
-# # name=['123','13','12','13','13456']
-# # for i in range(0,5):
-# #     print(name[i])
-# #     print('%s'%name[i])
-#
-#
-# # show_name=["following.1",'left.1','right.1','top.1','small_top.1','small_left.1','small_right.1','small_following.1',
-# #         'wheel_1.1','wheel_2.1','small2_top.1','small2_left.1','small2_right.1','small2_following.1','wheel_3.1','wheel_4.1']
-# # show_name_1 = ["following.1", 'left.1', 'right.1', 'top.1', 'small_top.1', 'small_left.1', 'small_right.1',
-# #                      'small_following.1','wheel_1.1', 'wheel_2.1', 'small2_top.1', 'small2_left.1', 'small2_right.1',
-# #                      'small2_following.1', 'wheel_3.1', 'wheel_4.1']
-# # show_name_2 = ["following", 'left', 'right', 'top', 'small_top', 'small_left', 'small_right','small_following',
-# #                      'wheel_1', 'wheel_2', 'small2_top', 'small2_left', 'small2_right','small2_following', 'wheel_3',
-# #                      'wheel_4']
-# # for k in range(4,10):
-# #     print(show_name[k])
-# # # for k in range(0,4):
-# # #     print(show_name[k])
-# # for i in range(1,4):
-# #     print(show_name_2[4])
-# # wc.test_4('Product1', 'top', 'Product4', 'Standard_20', 'standard_20_3')
-# # for i in range(1,4,1):
-# #     wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_4', 'Standard_4_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_left', 'Product4', 'Standard_5', 'Standard_5-%s' % i, 4)
-# #     wc.test_3('Product2', 'small_left', 'Product4', 'Standard_6', 'Standard_6_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_7', 'Standard_7-%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_23', 'Standard_23_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_25', 'Standard_25_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_27', 'Standard_27_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_22', 'Standard_22_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_24', 'Standard_24_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_26', 'Standard_26_%s' % i, 3)
-# # wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_4', 'Standard_4_1', 3)
-# # wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_4', 'Standard_4_2', 3)
-# # wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_4', 'Standard_4_3', 4)
-# # def Fixed():
-# #     catapp = win32.Dispatch("CATIA.Application")
-# #     productDocument1 = catapp.ActiveDocument
-# #     product1 = productDocument1.Product
-# #     constraints1 = product1.Connections("CATIAConstraints")
-# #     reference1 = product1.CreateReferenceFromName("Product5/Product1.1/!Product5/Product1.1/")
-# #     constraint1 = constraints1.AddMonoEltCst(0, reference1)
-# #     constraint1.Orientation = 0
-#
-# #---------------------------------------------------------------------------------------------------3DXML
-# # import time
+# #         self.Product1_Standard = [1, 2, 3, 8, 13, 14, 15, 16, 20]
+# #         self.Product2_Standard = [5, 6, 22, 24, 26]
+# #         self.Product3_Standard = [4, 7, 23, 25, 27]
 # #
+# #         for item in self.catia_save:
+# #             wc.saveas_close(self.full_save_dir, item, '.CATPart')
+# #
+# #         for j in self.Product1_Standard:
+# #             wc.part_open("Standard_%s" % j, system_root + "\\Standard_window")
+# #             wc.saveas_close(self.full_save_dir, "Standard_%s" % j, '.CATPart')
+# #             wc.Zoom_view()
+# #
+# #         wc.open_assembly()
+# #
+# #         for i in range(0, 4):
+# #             print(show_name_2[i])
+# #             wc.assembly_open_file(self.full_save_dir, "%s" % show_name_2[i], 0)
+# #             wc.saveas_specify_target(self.full_save_dir, "%s" % show_name_2[i], 'CATPart')
+# #         for k in range(0, 4):
+# #             print(show_name_1[k])
+# #             wc.show('%s' % show_name_1[k])
+# #
+# #         for j in self.Product1_Standard:
+# #             wc.assembly_open_file(self.full_save_dir, "Standard_%s" % j, 0)
+# #             wc.saveas_specify_target(self.full_save_dir, "Standard_%s" % j, 'CATPart')
+# #             wc.Zoom_view()
+# #
+# #         wc.add_offset_assembly("left", "top", gvar.width_W, "yz plane")  # 偏移組合(零件一,零件二,距離,元素)
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("left", "top", -gvar.height_H + 300, "xy plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("left", "top", 0, "zx plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("right", "top", -gvar.width_W, "yz plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("right", "top", -gvar.height_H + 300, "xy plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("right", "top", 0, "zx plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("following", "top", 0, "yz plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("following", "top", (-2 * gvar.height_H) + 45, "xy plane")
+# #         wc.Zoom_view()
+# #         wc.add_offset_assembly("following", "top", 0, "zx plane")
+# #         wc.Zoom_view()
+# #
+# #         for i in range(1, 3):
+# #             wc.test_3('Product1', 'top', 'Product1', 'Standard_3', 'standard_3_%s' % i, 3)
+# #             wc.test_3('Product1', 'top', 'Product1', 'Standard_20', 'standard_20_%s' % i, 3)
+# #             wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'standard_8_%s' % i, 3)
+# #             wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'standard_2_%s' % i, 3)
+# #             wc.test_3('Product1', 'following', 'Product1', 'Standard_14', 'Standard_13_%s' % i, 3)
+# #             wc.test_3('Product1', 'following', 'Product1', 'Standard_16', 'Standard_15_%s' % i, 3)
+# #             wc.test_3('Product1', 'Standard_14', 'Product1', 'Standard_13', 'Standard_14_%s' % i, 3)
+# #             wc.test_3('Product1', 'Standard_16', 'Product1', 'Standard_15', 'Standard_16_%s' % i, 3)
+# #
+# #         wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'central', 3)
+# #         wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'central', 3)
+# #         wc.test_3('Product1', 'top', 'Product1', 'Standard_3', 'standard_3_3', 4)
+# #         wc.test_3('Product1', 'top', 'Product1', 'Standard_20', 'standard_20_3', 4)
+# #         wc.test_3('Product1', 'following', 'Product1', 'Standard_1', 'Standard_1_1', 3)
+# #         wc.test_3('Product1', 'following', 'Product1', 'Standard_1', 'Standard_1_2', 4)
+# #         wc.test_3('Product1', 'following', 'Product1', 'Standard_1', 'Standard_1_3', 3)
+# #
+# #     create_window()
 # # time.sleep(1)
-# # mprog.saveas(gvar.full_save_dir, 'Product', '.3dxml')
-# # print('Saved as 3dxml...')
-# #---------------------------------------------------------------------------------------------------打包
+# # gvar.width_W = 500
+# # gvar.height_H = 500
+# # wc.part_open("following", gvar.system_root + "\\big_window")
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.Sideplate_param_change("width", gvar.width_W)
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.part_open("left", gvar.system_root + "\\big_window")
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.Sideplate_param_change("height", gvar.height_H)
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.part_open("right", gvar.system_root + "\\big_window")
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.Sideplate_param_change("height", gvar.height_H)
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.part_open("top", gvar.system_root + "\\big_window")
+# # time.sleep(1)
+# # wc.Zoom_view()
+# # time.sleep(1)
+# # wc.Sideplate_param_change("width", gvar.width_W)
+# # time.sleep(1)
+# # wc.Zoom_view()
+
+
+# number_1 = True
+# def number(a,b,c):
 #
+#     if (a + b) < c:
+#         number_1 = False
+#     elif (a + c) < b:
+#         number_1 = False
+#     elif (b + c) < a:
+#         number_1 = False
+#     else:
+#         number_1 = True
+#     if number_1 == True:
+#         print('yes')
+#     else:
+#         print('no')
 #
+# a = int(input('a：'))
+# b = int(input('b：'))
+# c = int(input('c：'))
 #
+# if a<+c and b<a+c and c<a+b:
+#     if a==b==c:
+#         print('等腰且等邊三角形')
+#     elif a==b or a==c or b==c:
+#         if a*a+b*b==c*c or a*a+c*c==b*b or b*b+c*c==a*a:
+#             print('等腰三角形')
+#         else:
+#             print('等腰三角形')
+#     elif a*a+b*b==c*c or a*a+c*c==b*b or b*b+c*c==a*a:
+#         print('不是等腰三角形')
+#     else:
+#         print('不是等腰三角形')10
+# else:
+#     print('無法構成三角形')
+# from math import sqrt
+# '''判断n是否为质数'''
+# def isPrime(n):
+#     if n < 2:
+#         return False
+#     for i in range(2,int(sqrt(n))+1):
+#         if n%i ==0:
+#             return False
+#     return True
+# '''累加n以内的质数，包括n'''
+# a = int(input('a：'))123
+# def addPrime(n):
+#     sumPrime = 0
+#     for i in range(n+1): #range(n)就不包括n
+#         if isPrime(i):
+#             sumPrime += i
+#     print(sumPrime)
 #
-#
-# # Fixed()
-# # for i in range(1, 4):
-# #     wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_4', 'Standard_4_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_left', 'Product4', 'Standard_7', 'Standard_7-%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_23', 'Standard_23_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_25', 'Standard_25_%s' % i, 3)
-# #     wc.test_3('Product3', 'small2_right', 'Product4', 'Standard_27', 'Standard_27_%s' % i, 3)
+# addPrime(a)
+# a = int(input('a：'))
+# b=(a//10//10)
+# c=(a//10%10)
+# d=(a%10)
+# if b== c or c==d or d==b :
+#     print('重複')
+# else:
+#     print('數字沒重複')
+
+
+
+
+for k in range(0,4):
+    print(gvar.catia_save[k])
+    wc.part_open(gvar.catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-09'14h21m27s'")
+
+    draft_gen_data = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+    window_gen_data = []
+    bom_whd_value = []
+    draft.add_drafting_infomation(draft_gen_data, 0)
+
+    window_gen_data.append(gvar.width)
+    window_gen_data.append(gvar.height)
+    window_gen_data.append(gvar.depth)
+    for i in range(0, 3):
+        bom_whd_value.append(int(window_gen_data[i]))
+    print(bom_whd_value)
+    rescale_flag = True
+    scale = 1
+    while rescale_flag is True:  # checking if scale recalibration is needed
+        scale = scale + 1
+        [center_data, scale, rescale_flag] = drafting_p.projection_parameter_calculation(0, 0, 0, 'A4', scale)
+        print(scale)
+    print(center_data)
+
+    DID = (gvar.catia_save[k]+".CATPart")
+    draft.add_drafting_infomation(draft_gen_data, 0)
+    draft.window_part(center_data, scale/1.5,DID)
+    wc.close_drafting(gvar.full_save_dir, gvar.catia_save[k], '.CATDrawing')
+    wc.part_close()
+    print(gvar.catia_save[k]+'_dwg_ok')
+
+
+
+
+# # following
+# DID=("following.CATPart")
+# draft.window_part(center_data, scale/2,DID)
+# wc.close_drafting(gvar.full_save_dir, 'following', '.CATDrawing')
+# wc.part_close()
+# print('following_dwg_ok')
 # #
-# #     wc.test_3('Product2', 'small_left', 'Product4', 'Standard_5', 'Standard_5-%s' % i, 4)
-# #     wc.test_3('Product2', 'small_left', 'Product4', 'Standard_6', 'Standard_6_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_22', 'Standard_22_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_24', 'Standard_24_%s' % i, 3)
-# #     wc.test_3('Product2', 'small_right', 'Product4', 'Standard_26', 'Standard_26_%s' % i, 3)
+# # # top
+# DID=("top.CATPart")
+# draft.add_drafting_infomation(draft_gen_data, 0)
+# draft.window_part(center_data, scale/2,DID)
+# wc.close_drafting(gvar.full_save_dir, 'top', '.CATDrawing')
+# wc.part_close()
+# print('top_dwg_ok')
 # #
-# # for i in range(1, 3):
-# #     wc.test_3('Product1', 'top', 'Product4', 'Standard_3', 'standard_3_%s' % i, 3)
-# #     wc.test_3('Product1', 'top', 'Product4', 'Standard_20', 'standard_20_%s' % i, 3)
-# #     wc.test_3('Product1', 'top', 'Product4', 'Standard_8', 'standard_8_%s' % i, 3)
-# #     wc.test_3('Product1', 'top', 'Product4', 'Standard_2', 'standard_2_%s' % i, 3)
-# #     wc.test_3('Product1', 'following', 'Product4', 'Standard_14', 'Standard_13_%s' % i, 3)
-# #     wc.test_3('Product1', 'following', 'Product4', 'Standard_16', 'Standard_15_%s' % i, 3)
-# #     wc.test_3('Product4', 'Standard_14', 'Product4', 'Standard_13', 'Standard_14_%s' % i, 3)
-# #     wc.test_3('Product4', 'Standard_16', 'Product4', 'Standard_15', 'Standard_16_%s' % i, 3)
-# #
-# # wc.test_3('Product1', 'top', 'Product4', 'Standard_2', 'central', 3)
-# # wc.test_3('Product1', 'top', 'Product4', 'Standard_8', 'central', 3)
-# # wc.test_3('Product1', 'top', 'Product4', 'Standard_3', 'standard_3_3', 4)
-# # wc.test_3('Product1', 'top', 'Product4', 'Standard_20', 'standard_20_3', 4)
-# # wc.test_3('Product1', 'following', 'Product4', 'Standard_1', 'Standard_1_1', 3)
-# # wc.test_3('Product1', 'following', 'Product4', 'Standard_1', 'Standard_1_2', 4)
-# # wc.test_3('Product1', 'following', 'Product4', 'Standard_1', 'Standard_1_3', 3)
-# # print('Saved as CATProduct...END')
-# #
+# DID=("left.CATPart")
+# draft.add_drafting_infomation(draft_gen_data, 0)
+# draft.window_part(center_data, scale/2,DID)
+# wc.close_drafting(gvar.full_save_dir, 'left', '.CATDrawing')
+# wc.part_close()
+# print('left_dwg_ok')
 #
-# def show_off_product():
-#     for i in range(1,10):
-#         catapp = win32.Dispatch("CATIA.Application")
-#         productDocument1 = catapp.ActiveDocument
-#         selection1 = productDocument1.Selection
-#         visPropertySet1 = selection1.VisProperties
-#         documents1 = catapp.Documents
-#         productDocument2 = documents1.Item("Product1.CATProduct")
-#         product1 = productDocument2.Product
-#         constraints1 = product1.Connections("CATIAConstraints")
-#         constraint1 = constraints1.Item("Offset.%s" % i)
-#         selection1.Add(constraint1)
-#         visPropertySet1 = visPropertySet1.Parent
-#         bSTR1 = visPropertySet1.Name
-#         bSTR2 = visPropertySet1.Name
-#         visPropertySet1.SetShow(1)
-#         selection1.Clear()
-#     for j in range(10, 33):
-#         selection2 = productDocument1.Selection
-#         visPropertySet2 = selection2.VisProperties
-#         constraint2 = constraints1.Item("Coincidence.%s" % j)
-#         selection2.Add(constraint2)
-#         visPropertySet2 = visPropertySet2.Parent
-#         bSTR3 = visPropertySet2.Name
-#         bSTR4 = visPropertySet2.Name
-#         visPropertySet2.SetShow(1)
-#         selection2.Clear()
-#
-#
-#     for i in range(1,14):
-#         selection3 = productDocument1.Selection
-#         visPropertySet3 = selection3.VisProperties
-#         productDocument3 = documents1.Item("Product2.CATProduct")
-#         product2 = productDocument3.Product
-#         constraints2 = product2.Connections("CATIAConstraints")
-#         constraint3 = constraints2.Item("Offset.%s" % i)
-#         selection3.Add(constraint3)
-#         visPropertySet3 = visPropertySet3.Parent
-#         bSTR5 = visPropertySet3.Name
-#         bSTR6 = visPropertySet3.Name
-#         visPropertySet3.SetShow(1)
-#         selection3.Clear()
-#     for j in range(14, 29):
-#         selection4 = productDocument1.Selection
-#         visPropertySet4 = selection4.VisProperties
-#         constraint4 = constraints2.Item("Coincidence.%s" % j)
-#         selection4.Add(constraint4)
-#         visPropertySet4 = visPropertySet4.Parent
-#         bSTR7 = visPropertySet4.Name
-#         bSTR8 = visPropertySet4.Name
-#         visPropertySet4.SetShow(1)
-#         selection4.Clear()
-#
-#
-#     for i in range(1,14):
-#         selection5 = productDocument1.Selection
-#         visPropertySet5 = selection5.VisProperties
-#         productDocument4 = documents1.Item("Product3.CATProduct")
-#         product3 = productDocument4.Product
-#         constraints3 = product3.Connections("CATIAConstraints")
-#         constraint5 = constraints3.Item("Offset.%s" % i)
-#         selection5.Add(constraint5)
-#         visPropertySet5 = visPropertySet5.Parent
-#         bSTR9 = visPropertySet5.Name
-#         bSTR10 = visPropertySet5.Name
-#         visPropertySet5.SetShow(1)
-#         selection5.Clear()
-#
-#     for j in range(14, 29):
-#         selection6 = productDocument1.Selection
-#         visPropertySet6 = selection6.VisProperties
-#         constraint6 = constraints3.Item("Coincidence.%s" % j)
-#         selection6.Add(constraint6)
-#         visPropertySet6 = visPropertySet6.Parent
-#         bSTR11 = visPropertySet6.Name
-#         bSTR12 = visPropertySet6.Name
-#         visPropertySet6.SetShow(1)
-#         selection6.Clear()
-#
-#     for i in range(2,8):
-#         catapp = win32.Dispatch("CATIA.Application")
-#         productDocument1 = catapp.ActiveDocument
-#         selection1 = productDocument1.Selection
-#         visPropertySet1 = selection1.VisProperties
-#         product1 = productDocument1.Product
-#         constraints1 = product1.Connections("CATIAConstraints")
-#         constraint1 = constraints1.Item("Coincidence.%s" % i)
-#         selection1.Add(constraint1)
-#         visPropertySet1 = visPropertySet1.Parent
-#         bSTR1 = visPropertySet1.Name
-#         bSTR2 = visPropertySet1.Name
-#         visPropertySet1.SetShow(1)
-#         selection1.Clear()
-# show_off_product()
-# # def qwe():
-# #     for i in range(1,7):
-# #         catapp = win32.Dispatch("CATIA.Application")
-# #         productDocument1 = catapp.ActiveDocument
-# #         selection1 = productDocument1.Selection
-# #         visPropertySet1 = selection1.VisProperties
-# #         product1 = productDocument1.Product
-# #         constraints1 = product1.Connections("CATIAConstraints")
-# #         constraint1 = constraints1.Item("Coincidence.%s" % i)
-# #         selection1.Add(constraint1)
-# #         visPropertySet1 = visPropertySet1.Parent
-# #         bSTR1 = visPropertySet1.Name
-# #         bSTR2 = visPropertySet1.Name
-# #         visPropertySet1.SetShow(1)
-# #         selection1.Clear()
-# # qwe()
+# DID=("right.CATPart")
+# draft.add_drafting_infomation(draft_gen_data, 0)
+# draft.window_part(center_data, scale/2,DID)
+# wc.close_drafting(gvar.full_save_dir, 'right', '.CATDrawing')
+# wc.part_close()
+# print('right_dwg_ok')
 
-#----------------------------------------------------------------------------------------------------------------------------------------------------
-import sys
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QTableWidget
-from PyQt5.QtWidgets import QTableWidgetItem
-from PyQt5.QtWidgets import QAbstractItemView
-from PyQt5.QtWidgets import QPushButton
-from PyQt5.QtCore import Qt
+# drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
 
-class testWindow(QWidget):
-    def __init__(self):
-        super().__init__()
 
-        self.initUI()
-
-    def initUI(self):
-
-        self.table = QTableWidget(self)
-        self.table.move(20, 20)
-        self.table.setColumnCount(3)
-        self.table.setFixedHeight(300)
-        self.table.setFixedWidth(500)
-        self.table.setSelectionBehavior(QAbstractItemView.SelectRows)#設置表格的選取方式是行選取
-        self.table.setSelectionMode(QAbstractItemView.SingleSelection)#設置選取方式爲單個選取
-        self.table.setHorizontalHeaderLabels(["標記ID", "標記名稱", "標記初始座標"]) #設置行表頭
-        self.table.verticalHeader().setVisible(False)#隱藏列表頭
-
-        self.table_insert()
-
-        self.table.itemChanged.connect(self.table_update)
-
-        self.delete_button = QPushButton(self)
-        self.delete_button.move(230, 350)
-        self.delete_button.setFixedWidth(100)
-        self.delete_button.setFixedHeight(32)
-        self.delete_button.clicked.connect(self.table_delete)
-        self.delete_button.setText("Delete")
-
-        self.setGeometry(200, 200, 570, 400)
-        self.show()
-
-    #insert,只是簡單插入一個固定數據
-    def table_insert(self):
-        row = self.table.rowCount()
-        self.table.insertRow(row)
-
-        item_id = QTableWidgetItem("1")
-        item_id.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)  # 設置物件的狀態爲只可被選擇（未設置可編輯）
-
-        item_name = QTableWidgetItem("door") #我們要求它可以修改，所以使用默認的狀態即可
-
-        item_pos = QTableWidgetItem("(1,2)")
-        item_pos.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)  # 設置物件的狀態爲只可被選擇
-
-        self.table.setItem(row, 0, item_id)
-        self.table.setItem(row, 1, item_name)
-        self.table.setItem(row, 2, item_pos)
-        #以下可以加入保存數據到數據的操作
-
-    #update
-    def table_update(self):
-        row_select = self.table.selectedItems()
-        if len(row_select) == 0:
-            return
-        id = row_select[0].text()
-        print(id[0])
-        new_name = row_select[1].text()
-        print("id: {}, save_name: {}".format(id,new_name))
-        # 以下可以加入保存數據到數據的操作
-        '''
-        eg. update {table} set name = "new_name" where id = "id"
-        '''
-
-    #delete
-    def table_delete(self):
-        row_select = self.table.selectedItems()
-        if len(row_select) == 0:
-            return
-        id = row_select[0].text()
-        print("id: {}".format(id))
-
-        row = row_select[0].row()
-        self.table.removeRow(row)
-        # 以下可以加入保存數據到數據的操作
-        '''
-        eg. delete from {table} where id = "id"
-        '''
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    main_window = testWindow()
-    sys.exit(app.exec_())

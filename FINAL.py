@@ -98,19 +98,23 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
 
         drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
+
         drafting_p.insert_picture('front', "Front view")
         # drafting_d.model_unfolded_view('mtplt', gvar.width, gvar.height, gvar.depth)
         # drafting_d.model_unfolded_view('left', gvar.width, gvar.height, gvar.depth)
 
         # self.full_save_dir="C:\\Users\\PDAL-BM-1\\Desktop\\123"
         wc.close_drafting(self.full_save_dir, 'A4_Window', '.CATDrawing')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
-        wc.open_drafting(self.full_save_dir, 'A4_Window')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
+        # wc.open_drafting(self.full_save_dir, 'A4_Window')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
         # ------------------------------------------------------------------------------st2
         print(self.full_save_dir)
         # bom.bom_contents(bom_whd_value[0], bom_whd_value[1], bom_whd_value[2], window_gen_data)
+        #------------------------------------------------------------------------------------------------
+        wc.part_open("following", system_root + "\\big_window")
 
 
 
+        #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
         print(draft_gen_data)
         # Excel_Bom(draft_gen_data)
         # 我沒辦法理解這個QQ
@@ -570,7 +574,7 @@ class Create(QtWidgets.QMainWindow, creat):
             gvar.small_height = float(self.ui.lineEdit_W.text()) / 2 - 49
             gvar.small_width = float(self.ui.lineEdit_H.text()) - 76.49
             gvar.small2_width = float(self.ui.lineEdit_H.text()) - 48.19
-            gvar.Quantity  = float(self.ui.lineEdit_Quantity())
+            # gvar.Quantity = float(self.ui.lineEdit_Quantity())
             print(gvar.width,gvar.height,gvar.Quantity)
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:

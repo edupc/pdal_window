@@ -1,8 +1,8 @@
 # globals設定參數的地方
 import os
 # 變數
-width = float()  # 窗體寬
-height = float()  # 窗體高
+width = float(500)  # 窗體寬
+height = float(500)  # 窗體高
 width_W = float()   #零件參數
 height_H = float()   #零件參數
 Quantity = float()
@@ -27,7 +27,7 @@ door_L = ""
 mtplt = 'Mtplt_Panel'
 mtplt_B = ''
 # 設定空
-full_save_dir = str("C:\\Users\\PDAL-BM-1\\Desktop\\123")#"C:\\Users\\PDAL-BM-1\\Desktop\\123"
+full_save_dir = str("C:\\Users\\PDAL-BM-1\\Desktop")#"C:\\Users\\PDAL-BM-1\\Desktop\\123"
 #v資料夾路徑
 mother_drafting_template = '\\drafting\\'
 system_root = os.path.dirname(os.path.realpath(__file__))

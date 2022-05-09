@@ -53,8 +53,11 @@ def part_open(target,dir):
     document = catapp.Documents
     try:
         partdoc = document.Open("%s\%s.%s" % (dir,target,"CATPart"))
+
     except:
         partdoc = document.Open("%s\%s.%s" % (dir,target,"CATProduct"))
+    # part = partdoc.Part
+    # part.Update()
 def Standard_part_open_(target,dir):
     catapp = win32.Dispatch("CATIA.Application")
     document = catapp.Documents
@@ -312,20 +315,20 @@ def show_off_Offset():
         visPropertySet6.SetShow(1)
         selection6.Clear()
 
-    for i in range(1, 7):
-        catapp = win32.Dispatch("CATIA.Application")
-        productDocument1 = catapp.ActiveDocument
-        selection1 = productDocument1.Selection
-        visPropertySet1 = selection1.VisProperties
-        product1 = productDocument1.Product
-        constraints1 = product1.Connections("CATIAConstraints")
-        constraint1 = constraints1.Item("Coincidence.%s" % i)
-        selection1.Add(constraint1)
-        visPropertySet1 = visPropertySet1.Parent
-        bSTR1 = visPropertySet1.Name
-        bSTR2 = visPropertySet1.Name
-        visPropertySet1.SetShow(1)
-        selection1.Clear()
+    # for i in range(1, 7):
+    #     catapp = win32.Dispatch("CATIA.Application")
+    #     productDocument1 = catapp.ActiveDocument
+    #     selection1 = productDocument1.Selection
+    #     visPropertySet1 = selection1.VisProperties
+    #     product1 = productDocument1.Product
+    #     constraints1 = product1.Connections("CATIAConstraints")
+    #     constraint1 = constraints1.Item("Coincidence.%s" % i)
+    #     selection1.Add(constraint1)
+    #     visPropertySet1 = visPropertySet1.Parent
+    #     bSTR1 = visPropertySet1.Name
+    #     bSTR2 = visPropertySet1.Name
+    #     visPropertySet1.SetShow(1)
+    #     selection1.Clear()
 
 
 #catia零件組合
@@ -459,7 +462,18 @@ class set_CATIA_workbench_env:
         except:
             pass
         return
+def clear_all_windows():
+    catapp = win32.Dispatch('CATIA.Application')
+    catapp.DisplayFileAlerts = False
+    all_window = [x for x in catapp.Windows]
+    print(all_window)
+    for window in all_window:
+        window.Close
 
+def part_close():
+    catapp = win32.Dispatch("CATIA.Application")
+    partdoc = catapp.ActiveDocument
+    partdoc.Close()
 
 #------------------------------------------------------------------------------------------------------執行
 
