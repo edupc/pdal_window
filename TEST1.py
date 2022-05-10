@@ -222,10 +222,10 @@ import time
 
 
 
-
+#
 for k in range(0,4):
     print(gvar.catia_save[k])
-    wc.part_open(gvar.catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-09'14h21m27s'")
+    wc.part_open(gvar.catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-10'18h03m19s'")
 
     draft_gen_data = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
     window_gen_data = []
@@ -249,6 +249,8 @@ for k in range(0,4):
     DID = (gvar.catia_save[k]+".CATPart")
     draft.add_drafting_infomation(draft_gen_data, 0)
     draft.window_part(center_data, scale/1.5,DID)
+
+    drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height, 0, gvar.catia_save[k])
     wc.close_drafting(gvar.full_save_dir, gvar.catia_save[k], '.CATDrawing')
     wc.part_close()
     print(gvar.catia_save[k]+'_dwg_ok')
@@ -258,6 +260,6 @@ for k in range(0,4):
 # drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height,0, gvar.catia_save[2])
 # drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height ,0 ,gvar.catia_save[3])
 # drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height,0, gvar.catia_save[0])
-# drafting_d.dim_output_only(gvar.width, gvar.height, gvar.depth,2)
-
+# drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height,0, gvar.catia_save[1])
+#
 # catia_save = ['top', 'right', 'following', 'left']

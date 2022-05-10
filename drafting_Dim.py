@@ -131,7 +131,7 @@ class DIM_REF_COORD_following:
         view_half_w = view_w / 2
         x_dim = XY_coord_output(view_half_w-(27.3/2), 0)
         y_dim = XY_coord_output(view_half_w-(27.3/2), 84.81)
-        x_dim_ref = [25, 25]  # 座標+位置
+        x_dim_ref = [0, 25]  # 座標+位置
         y_dim_ref = [-view_half_w, -40]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
@@ -146,10 +146,10 @@ class DIM_REF_COORD_left:
         view_d = self.box_d
         view_half_h = view_h / 2
         view_half_w = view_w / 2
-        x_dim = XY_coord_output(-84, view_h+50)
-        y_dim = XY_coord_output(-84, -50)
-        x_dim_ref = [-40, view_h+75]  # 座標+位置
-        y_dim_ref = [-87-25, view_half_w+50]  # 位置+座標
+        x_dim = XY_coord_output(43.5, view_half_h)
+        y_dim = XY_coord_output(43.5, view_half_h)
+        x_dim_ref = [0, view_half_h+25]  # 座標+位置
+        y_dim_ref = [-27.5-45, 0]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 class DIM_REF_COORD_top:
@@ -180,10 +180,10 @@ class DIM_REF_COORD_right:
         view_d = self.box_d
         view_half_h = view_h / 2
         view_half_w = view_w / 2
-        x_dim = XY_coord_output(view_half_w-(24.3/2), 0)
-        y_dim = XY_coord_output(view_half_w-(24.3/2), 84.81)
-        x_dim_ref = [0, 25]  # 座標+位置
-        y_dim_ref = [-view_half_w, -40]  # 位置+座標
+        x_dim = XY_coord_output(86.7/2, view_h / 2)
+        y_dim = XY_coord_output(86.7/2, view_h / 2)
+        x_dim_ref = [0, view_half_h+25]  # 座標+位置
+        y_dim_ref = [-86.7/2-40, 0]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 
