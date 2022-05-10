@@ -253,38 +253,11 @@ for k in range(0,4):
     wc.part_close()
     print(gvar.catia_save[k]+'_dwg_ok')
 
+# print(gvar.catia_save[0])
 
+# drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height,0, gvar.catia_save[2])
+# drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height ,0 ,gvar.catia_save[3])
+# drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height,0, gvar.catia_save[0])
+# drafting_d.dim_output_only(gvar.width, gvar.height, gvar.depth,2)
 
-
-# # following
-# DID=("following.CATPart")
-# draft.window_part(center_data, scale/2,DID)
-# wc.close_drafting(gvar.full_save_dir, 'following', '.CATDrawing')
-# wc.part_close()
-# print('following_dwg_ok')
-# #
-# # # top
-# DID=("top.CATPart")
-# draft.add_drafting_infomation(draft_gen_data, 0)
-# draft.window_part(center_data, scale/2,DID)
-# wc.close_drafting(gvar.full_save_dir, 'top', '.CATDrawing')
-# wc.part_close()
-# print('top_dwg_ok')
-# #
-# DID=("left.CATPart")
-# draft.add_drafting_infomation(draft_gen_data, 0)
-# draft.window_part(center_data, scale/2,DID)
-# wc.close_drafting(gvar.full_save_dir, 'left', '.CATDrawing')
-# wc.part_close()
-# print('left_dwg_ok')
-#
-# DID=("right.CATPart")
-# draft.add_drafting_infomation(draft_gen_data, 0)
-# draft.window_part(center_data, scale/2,DID)
-# wc.close_drafting(gvar.full_save_dir, 'right', '.CATDrawing')
-# wc.part_close()
-# print('right_dwg_ok')
-
-# drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
-
-
+# catia_save = ['top', 'right', 'following', 'left']

@@ -54,6 +54,149 @@ def model_unfolded_view(target, w, h, d):  # ,scale):
             else:
                 pass
             drawingdim.MoveValue(dim_ref_3[0], dim_ref_3[1], 0, 0)
+def model_unfolded_view_part(target, w, h, d,view):  # ,scale):
+    print(view)
+    part_attr = {gvar.sideU: 'Side_Panel_U', gvar.sideD: 'Side_Panel_D', gvar.body: 'Body_Panel',
+                 gvar.door_L: 'Door_Panel', gvar.mtplt_B: 'Mtplt_Panel'}
+    view_attr = {'front': 'Front_view', 'mtplt': 'Mtplt_view', 'left': 'Left_view'}
+    catapp = win32.Dispatch('CATIA.Application')
+    # document = catapp.Documents
+    # drawingdocument = document.Open(gvar.system_root+gvar.mother_drafting_template+'A4_Box'+'.CATDrawing')
+    drawingdocument = catapp.ActiveDocument
+    drawingsheets = drawingdocument.Sheets
+    drawingsheet = drawingsheets.Item('Sheet.1')
+    drawingviews = drawingsheet.Views
+    if view == 'following':
+        result1 = DIM_REF_COORD_following(h, w, d)
+    elif view == 'left':
+        result1 = DIM_REF_COORD_left(h, w, d)
+    elif view == 'right':
+        result1 = DIM_REF_COORD_right(h, w, d)
+    elif view == 'top':
+        result1 = DIM_REF_COORD_top(h, w, d)
+
+    def execute(keyword):
+        return getattr(result1, keyword)
+
+    if target in part_attr.keys():
+        drawingview = drawingviews.ActiveView
+        if 'bend' in target:
+            part_attr[target] = part_attr[target] + '_bend'
+        print(execute(part_attr[target]))
+        a = execute(part_attr[target])()
+    elif target in view_attr.keys():
+        # drawingview = drawingviews.Item(view_attr[target])
+        print(' '.join(view_attr[target].split('_')))
+        drawingview = drawingviews.Item(' '.join(view_attr[target].split('_')))
+        drawingview.Activate()
+        print(execute(view_attr[target]))
+        a = execute(view_attr[target])()
+    factory2d = drawingview.Factory2D
+    for data in a:
+        for i in range(0, len(a[data])):
+            dim_ref_1 = a[data][i][0]
+            dim_ref_2 = a[data][i][1]
+            dim_ref_3 = a[data][i][2]
+            print(dim_ref_1)
+            print(dim_ref_2)
+            print(dim_ref_3)
+            point1 = factory2d.CreatePoint(dim_ref_1[0], dim_ref_1[1])
+            point2 = factory2d.CreatePoint(dim_ref_2[0], dim_ref_2[1])
+            geoelem = [point1, point2]
+            geocoord = (dim_ref_1[0], dim_ref_1[1], dim_ref_2[0], dim_ref_2[1])
+            if dim_ref_1[1] == dim_ref_2[1]:
+                dim1 = drawingview.Dimensions.Add(0, geoelem, geocoord, 3)
+                dim1.Name = '%s_X' % data
+                drawingdim = drawingview.Dimensions.Item('%s_X' % data)
+            elif dim_ref_1[0] == dim_ref_2[0]:
+                dim1 = drawingview.Dimensions.Add2(0, geoelem, geocoord, None, 90)
+                dim1.Name = '%s_Y' % data
+                drawingdim = drawingview.Dimensions.Item('%s_Y' % data)
+            else:
+                pass
+            drawingdim.MoveValue(dim_ref_3[0], dim_ref_3[1], 0, 0)
+
+
+class DIM_REF_COORD_following:
+    def __init__(self, box_w, box_h, box_d):
+        self.box_w = float(box_w)
+        self.box_h = float(box_h)
+        self.box_d = float(box_d)
+
+    def Front_view(self):
+        view_h = self.box_h
+        view_w = self.box_w
+        view_d = self.box_d
+        view_half_h = view_h / 2
+        view_half_w = view_w / 2
+        x_dim = XY_coord_output(view_half_w-(27.3/2), 0)
+        y_dim = XY_coord_output(view_half_w-(27.3/2), 84.81)
+        x_dim_ref = [25, 25]  # 座標+位置
+        y_dim_ref = [-view_half_w, -40]  # 位置+座標
+        return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
+                                                    [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
+class DIM_REF_COORD_left:
+    def __init__(self, box_w, box_h, box_d):
+        self.box_w = float(box_w)
+        self.box_h = float(box_h)
+        self.box_d = float(box_d)
+    def Front_view(self):
+        view_h = self.box_h
+        view_w = self.box_w
+        view_d = self.box_d
+        view_half_h = view_h / 2
+        view_half_w = view_w / 2
+        x_dim = XY_coord_output(-84, view_h+50)
+        y_dim = XY_coord_output(-84, -50)
+        x_dim_ref = [-40, view_h+75]  # 座標+位置
+        y_dim_ref = [-87-25, view_half_w+50]  # 位置+座標
+        return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
+                                                    [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
+class DIM_REF_COORD_top:
+    def __init__(self, box_w, box_h, box_d):
+        self.box_w = float(box_w)
+        self.box_h = float(box_h)
+        self.box_d = float(box_d)
+    def Front_view(self):
+        view_h = self.box_h
+        view_w = self.box_w
+        view_d = self.box_d
+        view_half_h = view_h / 2
+        view_half_w = view_w / 2
+        x_dim = XY_coord_output(view_half_w-(27.3/2), 69.7)#改這69.7
+        y_dim = XY_coord_output(view_half_w-(27.3/2), 0)
+        x_dim_ref = [0, 25+69.7]  # 座標+位置
+        y_dim_ref = [-view_half_w, 35]  # 位置+座標
+        return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
+                                                    [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
+class DIM_REF_COORD_right:
+    def __init__(self, box_w, box_h, box_d):
+        self.box_w = float(box_w)
+        self.box_h = float(box_h)
+        self.box_d = float(box_d)
+    def Front_view(self):
+        view_h = self.box_h
+        view_w = self.box_w
+        view_d = self.box_d
+        view_half_h = view_h / 2
+        view_half_w = view_w / 2
+        x_dim = XY_coord_output(view_half_w-(24.3/2), 0)
+        y_dim = XY_coord_output(view_half_w-(24.3/2), 84.81)
+        x_dim_ref = [0, 25]  # 座標+位置
+        y_dim_ref = [-view_half_w, -40]  # 位置+座標
+        return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
+                                                    [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
+
+
+
+
+
+
+
+
+
+
+
 
 
 def dim_output_only(w, h, d, scale):
@@ -374,7 +517,3 @@ if __name__ == '__main__':
     a = BEND_IND_COORD(1000, 600, 200)
     x = a.Body_Panel()
     print(x)
-
-# model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
-# model_unfolded_view('mtplt', gvar.width, gvar.height, gvar.depth)
-# model_unfolded_view('left', gvar.width, gvar.height, gvar.depth)
