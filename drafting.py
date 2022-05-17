@@ -517,6 +517,157 @@ def window_part(drawingview_para, scale_p, DID):
             selection.Add(drawingtext3)
             # selection.Delete()
             selection.Clear()
+    elif DID == "small2_top.CATPart":
+        drawingviewgenerativebehavior1.DefineFrontView(-1, 0, 0, 0, 0, 1)  # Vector Direction Value
+        drawingview1.Angle = 3.141593
+        drawingviewgenerativebehavior1.Update()
+        # ----------------------------------------------------投影前視圖
+        drawingview1 = drawingviews1.Item('Front view')
+        drawingtexts1 = drawingview1.Texts
+        drawingtext1 = drawingtexts1.Item(1)
+        drawingtexts1 = drawingtext1.Parent
+        # ------------------------------------------------------------消除多於文字
+        selection.Add(drawingtext1)
+        # selection.Delete()
+        selection.Clear()
+
+        view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
+        # for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para)-1):
+            print(i)
+            drawingview3 = drawingviews1.Add('AutomaticNaming')
+            drawingview3.X = drawingview_para[i][0]
+            drawingview3.Y = drawingview_para[i][1]
+            drawingview3.Scale = scale
+            drawingviewgenerativelinks3 = drawingview3.GenerativeLinks
+            drawingviewgenerativebehavior3 = drawingview3.GenerativeBehavior
+            drawingviewgenerativebehavior3.Document = product
+            drawingviewgenerativebehavior1 = drawingview1.GenerativeBehavior
+            drawingviewgenerativebehavior3.DefineProjectionView(drawingviewgenerativebehavior1, drawingview_direction[
+                i])  # define projection direction (catRightView = 0, catLeftView = 1, catTopView = 2, catBottomView = 3, catRearView = 4)
+            drawingviewgenerativebehavior3.Update()
+
+            drawingview3 = drawingviews1.Item('%s' % view_name[i - 1])
+            drawingtexts3 = drawingview3.Texts
+            drawingtext3 = drawingtexts3.Item(1)
+            drawingtexts3 = drawingtext3.Parent
+            selection.Add(drawingtext3)
+            # selection.Delete()
+            selection.Clear()
+
+
+    elif DID == "small2_left.CATPart":
+        drawingviewgenerativebehavior1.DefineFrontView(0, 1, 0, 0, 0, 1)  # Vector Direction Value
+        drawingview1.Angle = 3.141593 / 2
+        drawingviewgenerativebehavior1.Update()
+        # ----------------------------------------------------投影前視圖
+        drawingview1 = drawingviews1.Item('Front view')
+        drawingtexts1 = drawingview1.Texts
+        drawingtext1 = drawingtexts1.Item(1)
+        drawingtexts1 = drawingtext1.Parent
+        # ------------------------------------------------------------消除多於文字
+        selection.Add(drawingtext1)
+        # selection.Delete()
+        selection.Clear()
+
+        view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
+        # for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para)-1):
+            print(i)
+            drawingview3 = drawingviews1.Add('AutomaticNaming')
+            drawingview3.X = drawingview_para[i][0]
+            drawingview3.Y = drawingview_para[i][1]
+            drawingview3.Scale = scale
+            drawingviewgenerativelinks3 = drawingview3.GenerativeLinks
+            drawingviewgenerativebehavior3 = drawingview3.GenerativeBehavior
+            drawingviewgenerativebehavior3.Document = product
+            drawingviewgenerativebehavior1 = drawingview1.GenerativeBehavior
+            drawingviewgenerativebehavior3.DefineProjectionView(drawingviewgenerativebehavior1, drawingview_direction[
+                i])  # define projection direction (catRightView = 0, catLeftView = 1, catTopView = 2, catBottomView = 3, catRearView = 4)
+            drawingviewgenerativebehavior3.Update()
+
+            drawingview3 = drawingviews1.Item('%s' % view_name[i - 1])
+            drawingtexts3 = drawingview3.Texts
+            drawingtext3 = drawingtexts3.Item(1)
+            drawingtexts3 = drawingtext3.Parent
+            selection.Add(drawingtext3)
+            # selection.Delete()
+            selection.Clear()
+
+    elif DID == "small2_right.CATPart":
+        drawingviewgenerativebehavior1.DefineFrontView(-1, 0, 0, 0, 0, 1)  # Vector Direction Value
+        drawingview1.Angle = 3.141593 / 2
+        drawingviewgenerativebehavior1.Update()
+        # ----------------------------------------------------投影前視圖
+        drawingview1 = drawingviews1.Item('Front view')
+        drawingtexts1 = drawingview1.Texts
+        drawingtext1 = drawingtexts1.Item(1)
+        drawingtexts1 = drawingtext1.Parent
+        # ------------------------------------------------------------消除多於文字
+        selection.Add(drawingtext1)
+        # selection.Delete()
+        selection.Clear()
+
+        view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
+        # for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para)-1):
+            print(i)
+            drawingview3 = drawingviews1.Add('AutomaticNaming')
+            drawingview3.X = drawingview_para[i][0]
+            drawingview3.Y = drawingview_para[i][1]
+            drawingview3.Scale = scale
+            drawingviewgenerativelinks3 = drawingview3.GenerativeLinks
+            drawingviewgenerativebehavior3 = drawingview3.GenerativeBehavior
+            drawingviewgenerativebehavior3.Document = product
+            drawingviewgenerativebehavior1 = drawingview1.GenerativeBehavior
+            drawingviewgenerativebehavior3.DefineProjectionView(drawingviewgenerativebehavior1, drawingview_direction[
+                i])  # define projection direction (catRightView = 0, catLeftView = 1, catTopView = 2, catBottomView = 3, catRearView = 4)
+            drawingviewgenerativebehavior3.Update()
+
+            drawingview3 = drawingviews1.Item('%s' % view_name[i - 1])
+            drawingtexts3 = drawingview3.Texts
+            drawingtext3 = drawingtexts3.Item(1)
+            drawingtexts3 = drawingtext3.Parent
+            selection.Add(drawingtext3)
+            # selection.Delete()
+            selection.Clear()
+    elif DID == "small2_following.CATPart":
+        drawingviewgenerativebehavior1.DefineFrontView(-1, 0, 0, 0, 0, 1)  # Vector Direction Value
+        drawingview1.Angle = 0
+        drawingviewgenerativebehavior1.Update()
+        # ----------------------------------------------------投影前視圖
+        # drawingview1 = drawingviews1.Item('Front view')
+        # drawingtexts1 = drawingview1.Texts
+        # drawingtext1 = drawingtexts1.Item(1)
+        # drawingtexts1 = drawingtext1.Parent
+        # # ------------------------------------------------------------消除多於文字
+        # selection.Add(drawingtext1)
+        # # selection.Delete()
+        # selection.Clear()
+
+        view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
+        # for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para)-1):
+            print(i)
+            drawingview3 = drawingviews1.Add('AutomaticNaming')
+            drawingview3.X = drawingview_para[i][0]
+            drawingview3.Y = drawingview_para[i][1]
+            drawingview3.Scale = scale
+            drawingviewgenerativelinks3 = drawingview3.GenerativeLinks
+            drawingviewgenerativebehavior3 = drawingview3.GenerativeBehavior
+            drawingviewgenerativebehavior3.Document = product
+            drawingviewgenerativebehavior1 = drawingview1.GenerativeBehavior
+            drawingviewgenerativebehavior3.DefineProjectionView(drawingviewgenerativebehavior1, drawingview_direction[
+                i])  # define projection direction (catRightView = 0, catLeftView = 1, catTopView = 2, catBottomView = 3, catRearView = 4)
+            drawingviewgenerativebehavior3.Update()
+
+            drawingview3 = drawingviews1.Item('%s' % view_name[i - 1])
+            drawingtexts3 = drawingview3.Texts
+            drawingtext3 = drawingtexts3.Item(1)
+            drawingtexts3 = drawingtext3.Parent
+            selection.Add(drawingtext3)
+            # selection.Delete()
+            selection.Clear()
 
     # ----------------------------------------------------------------------立體圖
     drawingview7 = drawingviews1.Add('Isometric view.2')

@@ -48,56 +48,78 @@ print(center_data)
 
 
 # -----------------------------------------------------------------------------------------------------small_catia
-
-for k in range(0, 4):
-
-    if int(k) == 0:
-        scale = scale - 6
-    elif int(k) == 1:
-        scale = scale-2
-    elif int(k) == 2:
-        scale = scale-2
-    elif int(k) == 3:
-        scale = scale - 6
-    print("scale:%s" % scale)
-    print(gvar.small_catia_save[k])
-    wc.part_open(gvar.small_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'20h10m26s'")
-    DID = (gvar.small_catia_save[k] + ".CATPart")
-    draft.add_drafting_infomation(draft_gen_data, 0)
-    draft.window_part(center_data, scale / 1.5, DID)
-    drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0, gvar.small_catia_save[k])
-    wc.close_drafting(gvar.full_save_dir, gvar.small_catia_save[k], '.CATDrawing')
-    wc.part_close()
-    print(gvar.small_catia_save[k] + '_dwg_ok')
-    if k == 0:
-        scale = scale +6
-    elif k == 1:
-        scale = scale +2
-    elif k == 2:
-        scale = scale +2
-    elif k == 3:
-        scale = scale +6
+#
+# for k in range(0, 4):
+#
+#     if int(k) == 0:
+#         scale = scale - 6
+#     elif int(k) == 1:
+#         scale = scale-2
+#     elif int(k) == 2:
+#         scale = scale-2
+#     elif int(k) == 3:
+#         scale = scale - 6
+#     print("scale:%s" % scale)
+#     print(gvar.small_catia_save[k])
+#     wc.part_open(gvar.small_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'20h10m26s'")
+#     DID = (gvar.small_catia_save[k] + ".CATPart")
+#     draft.add_drafting_infomation(draft_gen_data, 0)
+#     draft.window_part(center_data, scale / 1.5, DID)
+#     drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0, gvar.small_catia_save[k])
+#     wc.close_drafting(gvar.full_save_dir, gvar.small_catia_save[k], '.CATDrawing')
+#     wc.part_close()
+#     print(gvar.small_catia_save[k] + '_dwg_ok')
+#     if k == 0:
+#         scale = scale +6
+#     elif k == 1:
+#         scale = scale +2
+#     elif k == 2:
+#         scale = scale +2
+#     elif k == 3:
+#         scale = scale +6
 
 
 # small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']
 
 # -----------------------------------------------------------------------------------------------------small2_catia
-# for k in range(0,4):
-#     print(gvar.small2_catia_save[k])
-#     wc.part_open(gvar.small2_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-11'17h40m27s'")
-#
-#     DID = (gvar.small2_catia_save[k]+".CATPart")
-#     draft.add_drafting_infomation(draft_gen_data, 0)
-#     draft.window_part(center_data, scale/1.5,DID)
-#
-#     drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height, 0, gvar.small2_catia_save[k])
-#     wc.close_drafting(gvar.full_save_dir, gvar.small2_catia_save[k], '.CATDrawing')
-#     wc.part_close()
-#     print(gvar.small2_catia_save[k]+'_dwg_ok')
+for k in range(0, 4):
+    if int(k) == 0:
+        scale = scale - 6
+    elif int(k) == 1:
+        scale = scale - 2
+    elif int(k) == 2:
+        scale = scale - 6
+    elif int(k) == 3:
+        scale = scale - 2
+    print   (gvar.small2_catia_save[k])
 
+    wc.part_open(gvar.small2_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'21h14m20s'")
+
+    DID = (gvar.small2_catia_save[k] + ".CATPart")
+    draft.add_drafting_infomation(draft_gen_data, 0)
+    draft.window_part(center_data, scale / 1.5, DID)
+
+    drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0, gvar.small2_catia_save[k])
+    wc.close_drafting(gvar.full_save_dir, gvar.small2_catia_save[k], '.CATDrawing')
+    wc.part_close()
+    print(gvar.small2_catia_save[k] + '_dwg_ok')
+    if k == 0:
+        scale = scale + 6
+    elif k == 1:
+        scale = scale + 2
+    elif k == 2:
+        scale = scale + 6
+    elif k == 3:
+        scale = scale + 2
 print("DWG_finished")
 
 # -----------------------------------------------------------------------------------------------------test
+
+# wc.part_open(gvar.small2_catia_save[0], gvar.full_save_dir + "\\AL500500-2022-05-16'21h14m20s'")
+# DID = (gvar.small2_catia_save[0]+".CATPart")
+# draft.add_drafting_infomation(draft_gen_data, 0)
+# draft.window_part(center_data, scale / 1.5, DID)
+# drafting_d.model_unfolded_view_part('front', gvar.width- 76.49, gvar.height/ 2 - 49, 0, gvar.small2_catia_save[0])
 
 # print(gvar.catia_save[0])
 
@@ -142,9 +164,6 @@ print("DWG_finished")
 #     wc.part_close()
 #     print(gvar.catia_save[k]+'_dwg_ok')
 
+small_catia_save = ['small_top', 'small_left', 'small_right', 'small_following']  # 名稱再來修訂吧3457 小玻璃架
 
-# wc.part_open(gvar.small_catia_save[0], gvar.full_save_dir + "\\AL500500-2022-05-11'17h40m27s'")
-# DID = (gvar.small_catia_save[3]+".CATPart")
-# draft.add_drafting_infomation(draft_gen_data, 0)
-# draft.window_part(center_data, scale / 1.5, DID)
-# drafting_d.model_unfolded_view_part('front', gvar.width- 76.49, gvar.height/ 2 - 49, 0, gvar.small_catia_save[3])
+small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']

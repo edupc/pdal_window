@@ -333,10 +333,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.add_offset_assembly("small2_top", "small2_following", -gvar.small2_width + 48, "xy plane")  # 變數.
         wc.add_offset_assembly("small2_following", "small2_top", 0, "yz plane")
         wc.add_offset_assembly("small2_following", "small2_top", 0, "zx plane")
-        wc.add_offset_assembly("small2_left", "small2_following", gvar.small_height / 2, "yz plane")  # 變數.
+        wc.add_offset_assembly("small2_left", "small2_following", gvar.small_height / 2 ,"yz plane")  # 變數.
         wc.add_offset_assembly("small2_left", "small2_following", -gvar.small2_width / 2, "xy plane")  # 變數.
-        wc.add_offset_assembly("small2_left", "small2_following", 0, "zx plane")
-        wc.add_offset_assembly("small2_right", "small2_following", -gvar.small_height / 2, "yz plane")  # 變數.
+        wc.add_offset_assembly("small2_left", "small2_following", -13.45, "zx plane")
+        wc.add_offset_assembly("small2_right", "small2_following", -gvar.small_height / 2-10.8, "yz plane")  # 變數.
         wc.add_offset_assembly("small2_right", "small2_following", -gvar.small2_width / 2, "xy plane")
         wc.add_offset_assembly("small2_right", "small2_following", 0, "zx plane")
         wc.add_offset_assembly('wheel_3', 'small2_following', 0, 'top_Point2')
