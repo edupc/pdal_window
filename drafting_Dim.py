@@ -164,8 +164,8 @@ class DIM_REF_COORD_small_left:
         view_half_w = view_w / 2
         x_dim = XY_coord_output((79.71/2), view_half_h)  # -187.51.-187.81
         y_dim = XY_coord_output((79.71/2), view_half_h)
-        x_dim_ref = [0, 48 + 40]  # 座標+位置
-        y_dim_ref = [-view_half_h - 40, 25]  # 位置+座標
+        x_dim_ref = [0,  -view_half_h-48]  # 座標+位置
+        y_dim_ref = [-75, 0]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 class DIM_REF_COORD_small_right:
@@ -180,8 +180,8 @@ class DIM_REF_COORD_small_right:
         view_half_w = view_w / 2
         x_dim = XY_coord_output(48.2/2, view_half_h)  # -187.51.-187.81
         y_dim = XY_coord_output(48.2/2, view_half_h)
-        x_dim_ref = [0, 48 + 40]  # 座標+位置
-        y_dim_ref = [-view_half_h - 40, 25]  # 位置+座標
+        x_dim_ref = [0,  view_half_h+25]  # 座標+位置
+        y_dim_ref = [-60, 0]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 class DIM_REF_COORD_small_following:
@@ -197,8 +197,8 @@ class DIM_REF_COORD_small_following:
         view_half_w = view_w / 2
         x_dim = XY_coord_output(view_half_w, 55.06/2)#改這69.7
         y_dim = XY_coord_output(view_half_w, 55.06/2)
-        x_dim_ref = [0, 25+69.7]  # 座標+位置
-        y_dim_ref = [-view_half_w, 35]  # 位置+座標
+        x_dim_ref = [0, 25+40]  # 座標+位置
+        y_dim_ref = [-view_half_w-25, 0]  # 位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 

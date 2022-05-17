@@ -45,7 +45,7 @@ drafting_info_text_position_A4 = [[146, 41, 3.5, 3, 1], [146, 34.5, 3.5, 3, 1], 
 box_draft_X_clearence = 10
 box_draft_Y_clearence = 25
 #--------------------------------------中心軸座標
-box_draft_area_center_initX = 148.5
+box_draft_area_center_initX = 200
 box_draft_area_center_initY = 105
 #--------------------------------------中心軸座標
 bom_isomertic_view_center_initX = 250

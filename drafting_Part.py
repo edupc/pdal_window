@@ -43,8 +43,8 @@ def projection_parameter_calculation(width, height, depth, papersize, scale):
     h_scale = gvar.height * scale  # box height after scaling
     d_scale = gvar.depth * scale  # box depth after scaling
     # ---------------------------FULL PROJECTION PARAMETER SETTINGS-----------------------------------------(全投影計算)
-    drafting_area_X_range = w_scale + d_scale + 50  # 10間距*2
-    drafting_area_Y_range = h_scale + w_scale + 50
+    drafting_area_X_range = w_scale + d_scale + 80  # 10間距*2
+    drafting_area_Y_range = h_scale + w_scale + 80
     # [xmin xmax ymin ymax]
     drafting_area_extremum = [drafting_area_centerX - drafting_area_X_range / 2,
                               drafting_area_centerX + drafting_area_X_range / 2,

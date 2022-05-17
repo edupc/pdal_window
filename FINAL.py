@@ -274,7 +274,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.add_offset_assembly("small_following", "small_left", gvar.small_height / 2 , "yz plane")  # 變數.一半的h#-20.8
         wc.add_offset_assembly("small_following", "small_left", -31.905+4.225, "xy plane1")  # 變數.w-12.69
         wc.add_offset_assembly("small_following", "small_left", 31.905, "zx plane")
-        wc.add_offset_assembly("small_left", "small_right", -gvar.small_height, "yz plane")  # 變數#20.8
+        wc.add_offset_assembly("small_left", "small_right", -gvar.small_height-10.8, "yz plane")  # 變數#20.8
         wc.add_offset_assembly("small_left", "small_right", 0, "xy plane")
         wc.add_offset_assembly("small_left", "small_right",-21.255, "zx plane")
         wc.add_offset_assembly('wheel_1', 'small_following', 0, 'top_Point2')

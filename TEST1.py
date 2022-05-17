@@ -35,7 +35,7 @@ print(center_data)
 # -----------------------------------------------------------------------------------------------------BIG_windows
 # for k in range(0,4):
 #     print(gvar.catia_save[k])
-#     wc.part_open(gvar.catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-11'17h40m27s'")
+#     wc.part_open(gvar.catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'20h10m26s'")
 #
 #     DID = (gvar.catia_save[k]+".CATPart")
 #     draft.add_drafting_infomation(draft_gen_data, 0)
@@ -49,29 +49,34 @@ print(center_data)
 
 # -----------------------------------------------------------------------------------------------------small_catia
 
-for k in range(0,4):
-    # print(k)
-    # if k == 0 or 3 :
-    #     scale = scale
-    # elif k == 1 or 2 :
-    #     scale = scale*2
-    # print("scale:%s" % scale)
+for k in range(0, 4):
+
+    if int(k) == 0:
+        scale = scale - 6
+    elif int(k) == 1:
+        scale = scale-2
+    elif int(k) == 2:
+        scale = scale-2
+    elif int(k) == 3:
+        scale = scale - 6
+    print("scale:%s" % scale)
     print(gvar.small_catia_save[k])
-    wc.part_open(gvar.small_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'18h43m48s'")
-    DID = (gvar.small_catia_save[k]+".CATPart")
+    wc.part_open(gvar.small_catia_save[k], gvar.full_save_dir + "\\AL500500-2022-05-16'20h10m26s'")
+    DID = (gvar.small_catia_save[k] + ".CATPart")
     draft.add_drafting_infomation(draft_gen_data, 0)
-    draft.window_part(center_data, scale/1.5,DID)
+    draft.window_part(center_data, scale / 1.5, DID)
     drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0, gvar.small_catia_save[k])
     wc.close_drafting(gvar.full_save_dir, gvar.small_catia_save[k], '.CATDrawing')
     wc.part_close()
-
-    # if k == 0 or 3:
-    #     scale = scale
-    # elif k == 1 or 2:
-    #     scale = scale/2
-    # print(scale)
     print(gvar.small_catia_save[k] + '_dwg_ok')
-
+    if k == 0:
+        scale = scale +6
+    elif k == 1:
+        scale = scale +2
+    elif k == 2:
+        scale = scale +2
+    elif k == 3:
+        scale = scale +6
 
 
 # small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']
