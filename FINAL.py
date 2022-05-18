@@ -238,7 +238,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         wc.add_offset_assembly("left", "top", gvar.width_W, "yz plane")  # 偏移組合(零件一,零件二,距離,元素)
         wc.Zoom_view()
-        wc.add_offset_assembly("left", "top", -gvar.height_H , "xy plane")
+        wc.add_offset_assembly("left", "top", 0 , "err plane")
         wc.Zoom_view()
         wc.add_offset_assembly("left", "top", 42.8+1.51, "zx plane")
         wc.Zoom_view()
