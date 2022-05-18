@@ -96,30 +96,85 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print(center_data)
         # draft.window_full_projection_from_template(0, scale)  # 組合圖擺圖
         draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
-
         drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
-
         drafting_p.insert_picture('front', "Front view")
         # drafting_d.model_unfolded_view('mtplt', gvar.width, gvar.height, gvar.depth)
         # drafting_d.model_unfolded_view('left', gvar.width, gvar.height, gvar.depth)
-
         # self.full_save_dir="C:\\Users\\PDAL-BM-1\\Desktop\\123"
         wc.close_drafting(self.full_save_dir, 'A4_Window', '.CATDrawing')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
         # wc.open_drafting(self.full_save_dir, 'A4_Window')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
-        # ------------------------------------------------------------------------------st2
-        print(self.full_save_dir)
-        # bom.bom_contents(bom_whd_value[0], bom_whd_value[1], bom_whd_value[2], window_gen_data)
-        #------------------------------------------------------------------------------------------------
-        wc.part_open("following", system_root + "\\big_window")
+        # -----------------------------------------------------------------------------------------------------BIG_windows
+        for k in range(0, 4):
+            wc.part_open(gvar.catia_save[k], self.full_save_dir)
+            DID = (gvar.catia_save[k] + ".CATPart")
+            draft.add_drafting_infomation(draft_gen_data, 0)
+            draft.window_part(center_data, scale / 1.5, DID)
+            drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height, 0, gvar.catia_save[k])
+            wc.close_drafting(self.full_save_dir, gvar.catia_save[k], '.CATDrawing')
+            wc.part_close()
+        # -----------------------------------------------------------------------------------------------------small_catia
+        for k in range(0, 4):
+            if int(k) == 0:
+                scale = scale - 6
+            elif int(k) == 1:
+                scale = scale - 2
+            elif int(k) == 2:
+                scale = scale - 2
+            elif int(k) == 3:
+                scale = scale - 6
+            wc.part_open(gvar.small_catia_save[k], self.full_save_dir)
+            DID = (gvar.small_catia_save[k] + ".CATPart")
+            draft.add_drafting_infomation(draft_gen_data, 0)
+            draft.window_part(center_data, scale / 1.5, DID)
+            drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0,
+                                                gvar.small_catia_save[k])
+            wc.close_drafting(self.full_save_dir, gvar.small_catia_save[k], '.CATDrawing')
+            wc.part_close()
+            if k == 0:
+                scale = scale + 6
+            elif k == 1:
+                scale = scale + 2
+            elif k == 2:
+                scale = scale + 2
+            elif k == 3:
+                scale = scale + 6
+        # -----------------------------------------------------------------------------------------------------small2_catia
+        for k in range(0, 4):
+            if int(k) == 0:
+                scale = scale - 6
+            elif int(k) == 1:
+                scale = scale - 2
+            elif int(k) == 2:
+                scale = scale - 6
+            elif int(k) == 3:
+                scale = scale - 2
+            wc.part_open(gvar.small2_catia_save[k], self.full_save_dir)
+            DID = (gvar.small2_catia_save[k] + ".CATPart")
+            draft.add_drafting_infomation(draft_gen_data, 0)
+            draft.window_part(center_data, scale / 1.5, DID)
+            drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0,
+                                                gvar.small2_catia_save[k])
+            wc.close_drafting(self.full_save_dir, gvar.small2_catia_save[k], '.CATDrawing')
+            wc.part_close()
+            if k == 0:
+                scale = scale + 6
+            elif k == 1:
+                scale = scale + 2
+            elif k == 2:
+                scale = scale + 6
+            elif k == 3:
+                scale = scale + 2
+        print("DWG_finished")
 
 
 
-        #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
-        print(draft_gen_data)
-        # Excel_Bom(draft_gen_data)
-        # 我沒辦法理解這個QQ
-        import bom
-        bom.Excel_Bom(draft_gen_data)
+
+        # #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
+        # print(draft_gen_data)
+        # # Excel_Bom(draft_gen_data)
+        # # 我沒辦法理解這個QQ
+        # import bom
+        # bom.Excel_Bom(draft_gen_data)
 
 
 
