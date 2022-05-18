@@ -208,7 +208,7 @@ def insert_picture(part, face):
         width_p = picture.width
         height_p = picture.height
         picture.x = - picture.width / 2 - gvar.height/2
-        picture.y = - picture.height / 2 -62.19
+        picture.y = - picture.height / 2
 
 
 

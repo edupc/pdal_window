@@ -72,15 +72,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.lineEdit_file_root.setText(self.route)
 
     def create_window_Dwg(self):
-        # ------------------------------------------------------------------------------測試用程式碼(快速開啟)
-        self.full_save_dir = gvar.full_save_dir
-        # print(self.full_save_dir)
-        # wc.assembly_open_file(self.full_save_dir, "AL_window", 1)
-        # ------------------------------------------------------------------------------st1
-        # print(self.full_save_dir)
-        # wc.assembly_open_file(self.full_save_dir, "AL_window", 1)
-        draft.add_drafting_infomation(draft_gen_data, 0)  # 標題欄
 
+        self.full_save_dir = gvar.full_save_dir
+        wc.part_open(gvar.AL_Window_name[0],self.full_save_dir)
+        draft.add_drafting_infomation(draft_gen_data, 0)
         window_gen_data.append(gvar.width)
         window_gen_data.append(gvar.height)
         window_gen_data.append(gvar.depth)
@@ -94,15 +89,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             [center_data, scale, rescale_flag] = drafting_p.projection_parameter_calculation(0, 0, 0, 'A4', scale)
             print(scale)
         print(center_data)
-        # draft.window_full_projection_from_template(0, scale)  # 組合圖擺圖
+
+
         draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
         drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
         drafting_p.insert_picture('front', "Front view")
-        # drafting_d.model_unfolded_view('mtplt', gvar.width, gvar.height, gvar.depth)
-        # drafting_d.model_unfolded_view('left', gvar.width, gvar.height, gvar.depth)
-        # self.full_save_dir="C:\\Users\\PDAL-BM-1\\Desktop\\123"
         wc.close_drafting(self.full_save_dir, 'A4_Window', '.CATDrawing')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
-        # wc.open_drafting(self.full_save_dir, 'A4_Window')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
         # -----------------------------------------------------------------------------------------------------BIG_windows
         for k in range(0, 4):
             wc.part_open(gvar.catia_save[k], self.full_save_dir)
@@ -436,13 +428,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.test_2('Product1', 'top', 'Product2', 'wheel_1', 'Plane_end_B')
         wc.test_2('Product1', 'top', 'Product3', 'wheel_3', 'Plane_end_A')
         wc.test_2('Product1', 'left', 'Product2', 'small_right', 'Plane_set_end')
-        wc.saveas(self.full_save_dir, 'AL_Window', '.CATProduct')
+        # wc.saveas(self.full_save_dir, 'AL_Window', '.CATProduct')
 
 #-------------------------------------------------------------------------------------------
         wc.Zoom_view()
         wc.show_off_Offset()
         wc.saveas(self.full_save_dir, 'AL_Window', '.CATProduct')
+        # wc.closes
         print('Saved as CATProduct...END')
+        for k in range(0, 4):
+            wc.closes(self.full_save_dir, gvar.AL_Window_name[k], ".CATProduct")
 
     #CATIA 圖面執行檔
     def Dwg_Winddow(self):

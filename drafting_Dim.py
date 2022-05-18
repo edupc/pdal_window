@@ -539,10 +539,10 @@ class DIM_REF_COORD:
         view_w = self.box_w
         view_half_h = view_h / 2
         view_half_w = view_w / 2
-        x_dim = XY_coord_output(view_half_w, view_h-62.19)#-187.51.-187.81
-        y_dim = XY_coord_output(view_half_w, 62.19)
-        x_dim_ref = [0, view_h-62.19+25]#座標+位置
-        y_dim_ref = [-view_half_w-25 ,view_half_h-62.19]#位置+座標
+        x_dim = XY_coord_output(view_half_w, view_h)#-187.51.-187.81
+        y_dim = XY_coord_output(view_half_w, 0)
+        x_dim_ref = [0, view_h+25]#座標+位置
+        y_dim_ref = [-view_half_w-25 ,view_half_h]#位置+座標
         return {DIM_REF_COORD.Front_view.__name__: [[x_dim.quadrant_1(), x_dim.quadrant_2(), x_dim_ref],
                                                     [x_dim.quadrant_2(), y_dim.quadrant_3(), y_dim_ref]]}
 

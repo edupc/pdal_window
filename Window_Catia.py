@@ -219,7 +219,7 @@ def closes (save_dir, target, data_type):
         saveas = catapp.ActiveDocument
         saveas.SaveAs('%s\%s%s' % (save_dir, target, data_type))
     finally:
-        saveas.Save()
+        # saveas.Save()
         saveas.Close()
 #增加偏移拘束
 def add_offset_assembly(element1,element2,dist,relation):
