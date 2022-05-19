@@ -42,6 +42,59 @@ def start_CATIA(self):
         return False
     else:
         return True
+class set_CATIA_workbench_env:
+    def __init__(self):
+        # self.catapp = win32.Dispatch("CATIA.Application")
+        self.env_name = {'Part_Design': 'PrtCfg', 'Product_Assembly': 'Assembly',
+                         'Generative_Sheetmetal_Design': 'SmdNewDesignWorkbench', 'Drafting': 'Drw'}
+        self.catapp = win32.Dispatch("CATIA.Application")
+        # add some CATIA-specific settings here (Seeing CATIA Automation manual-Application section)
+        self.catapp.DisplayFileAlerts = False
+        self.catapp.Visible = False
+
+    def Part_Design(self):
+        self.catapp.Visible = False
+        self.catapp.StartWorkbench(self.env_name[self.Part_Design.__name__])
+        try:
+            temp = self.catapp.ActiveDocument
+            temp.close()
+        except:
+            pass
+        return
+
+    def Product_Assembly(self):
+        self.catapp.Visible = False
+        self.catapp.StartWorkbench(self.env_name[self.Product_Assembly.__name__])
+        try:
+            temp = self.catapp.ActiveDocument
+            temp.close()
+        except:
+            pass
+        return
+
+    def Generative_Sheetmetal_Design(self):
+        self.catapp.Visible = False
+        self.catapp.StartWorkbench(self.env_name[self.Generative_Sheetmetal_Design.__name__])
+        try:
+            temp = self.catapp.ActiveDocument
+            temp.close()
+        except:
+            pass
+        return
+
+    def Drafting(self):
+        self.catapp.Visible = True
+        self.catapp.StartWorkbench(self.env_name[self.Drafting.__name__])
+        try:
+            temp = self.catapp.ActiveDocument
+            temp.close()
+        except:
+            pass
+        return
+
+
+
+
 #Part 開啟
 def Zoom_view ():
     catapp = win32.Dispatch("CATIA.Application")
@@ -421,54 +474,14 @@ def show_off():
     visPropertySet1.SetShow (1)
     selection1.Clear()
 
-class set_CATIA_workbench_env:
-    def __init__(self):
-        # self.catapp = win32.Dispatch("CATIA.Application")
-        self.env_name = {'Part_Design': 'PrtCfg', 'Product_Assembly': 'Assembly',
-                'Generative_Sheetmetal_Design': 'SmdNewDesignWorkbench', 'Drafting': 'Drw'}
-    def Part_Design(self):
-        catapp = win32.Dispatch("CATIA.Application")
-        catapp.StartWorkbench(self.env_name[self.Part_Design.__name__])
-        try:
-            temp = catapp.ActiveDocument
-            temp.close()
-        except:
-            pass
-        return
-    def Product_Assembly(self):
-        catapp = win32.Dispatch("CATIA.Application")
-        catapp.StartWorkbench(self.env_name[self.Product_Assembly.__name__])
-        try:
-            temp = catapp.ActiveDocument
-            temp.close()
-        except:
-            pass
-        return
-    def Generative_Sheetmetal_Design(self):
-        catapp = win32.Dispatch("CATIA.Application")
-        catapp.StartWorkbench(self.env_name[self.Generative_Sheetmetal_Design.__name__])
-        try:
-            temp = catapp.ActiveDocument
-            temp.close()
-        except:
-            pass
-        return
-    def Drafting(self):
-        catapp = win32.Dispatch("CATIA.Application")
-        catapp.StartWorkbench(self.env_name[self.Drafting.__name__])
-        try:
-            temp = catapp.ActiveDocument
-            temp.close()
-        except:
-            pass
-        return
 def clear_all_windows():
     catapp = win32.Dispatch('CATIA.Application')
+    catapp.RefreshDisplay = False
     catapp.DisplayFileAlerts = False
     all_window = [x for x in catapp.Windows]
     print(all_window)
     for window in all_window:
-        window.Close
+        window.Close()
 
 def part_close():
     catapp = win32.Dispatch("CATIA.Application")
@@ -481,3 +494,5 @@ def part_close():
 catia_save = ['top','right','following','left']
 small_catia_save = ['small_top','small_left','small_right','small_following']#名稱再來修訂吧3457 小玻璃架
 small2_catia_save = ['small2_following','small2_left','small2_top','small2_right']#名稱再來修訂吧.1235 小玻璃架
+
+#但你可以在代碼的開頭使用 CATIA.Visible = False 並在最後使用 CATIA.Visible = True 。然後catia會​​消失，但你不會看到閃爍。

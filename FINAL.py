@@ -73,6 +73,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def create_window_Dwg(self):
 
+        wc.clear_all_windows()
+
+        from Window_Catia import set_CATIA_workbench_env
+        env = set_CATIA_workbench_env()
+        env.Generative_Sheetmetal_Design()
+
         self.full_save_dir = gvar.full_save_dir
         wc.part_open(gvar.AL_Window_name[0],self.full_save_dir)
         draft.add_drafting_infomation(draft_gen_data, 0)
@@ -161,18 +167,24 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
-        # #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
-        # print(draft_gen_data)
-        # # Excel_Bom(draft_gen_data)
-        # # 我沒辦法理解這個QQ
-        # import bom
-        # bom.Excel_Bom(draft_gen_data)
+        #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
+        print(draft_gen_data)
+        # Excel_Bom(draft_gen_data)
+        # 我沒辦法理解這個QQ
+        import bom
+        bom.Excel_Bom(draft_gen_data,self.full_save_dir)
 
 
 
 #------------------------------------------------------------------------------------------------------------------------
     # catia執行檔
     def create_window(self):
+
+        wc.clear_all_windows()
+        from Window_Catia import set_CATIA_workbench_env
+        env = set_CATIA_workbench_env()
+        env.Part_Design()
+        env.Product_Assembly()
         show_name_1 = ["following.1", 'left.1', 'right.1', 'top.1', 'small_top.1', 'small_left.1', 'small_right.1',
                      'small_following.1','wheel_1.1', 'wheel_2.1', 'small2_top.1', 'small2_left.1', 'small2_right.1',
                      'small2_following.1', 'wheel_3.1', 'wheel_4.1']

@@ -14,6 +14,12 @@ small_width = float()  # -132.5#255
 small_height = float()  # 172.5
 small2_width = float()  # -120#267.5
 # 檔案名稱
+Ex_bom = ['AL%s%s_A' % (int(width), int(height)), 'AL%s%s-B' % (int(width), int(height))
+        , 'AL%s%s-C' % (int(width), int(height)), 'AL%s%s-D' % (int(width), int(height))
+        , 'AL%s%s-LA' % (int(width), int(height)), 'AL%s%s-LB' % (int(width), int(height))
+        , 'AL%s%s-LC' % (int(width), int(height)), 'AL%s%s-LD' % (int(width), int(height))
+        , 'AL%s%s-RA' % (int(width), int(height)), 'AL%s%s-RB' % (int(width), int(height))
+        , 'AL%s%s-RC' % (int(width), int(height)), 'AL%s%s-RD' % (int(width), int(height)), "固定螺絲", "固定螺絲"]
 catia_save = ['top', 'right', 'following', 'left']
 small_catia_save = ['small_top', 'small_left', 'small_right', 'small_following']  # 名稱再來修訂吧3457 小玻璃架
 small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']  # 名稱再來修訂吧.1235 小玻璃架

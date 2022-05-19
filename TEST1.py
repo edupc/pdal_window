@@ -152,4 +152,12 @@ import time
 # for k in range(0,3):
 #     wc.closes(gvar.full_save_dir,gvar.AL_Window_name[k],".CATDrawing")
 
-wc.closes(gvar.full_save_dir,gvar.AL_Window_name[3],".CATDrawing")
+# wc.closes(gvar.full_save_dir,gvar.AL_Window_name[3],".CATDrawing")
+
+# wc.CATIA_ERR()
+# wc.clear_all_windows()
+
+import time
+from tqdm import tqdm
+for i in tqdm(range(100)):
+    time.sleep(0.05)
