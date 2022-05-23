@@ -157,7 +157,11 @@ import time
 # wc.CATIA_ERR()
 # wc.clear_all_windows()
 
-import time
-from tqdm import tqdm
-for i in tqdm(range(100)):
-    time.sleep(0.05)
+
+#-------------------------------------------------------------------------------------------------進度條 ㄏ
+# import time
+# from tqdm import tqdm
+# for i in tqdm(range(100)):
+#     time.sleep(0.05)
+
+#------------------------------------------------------------------------------------------------

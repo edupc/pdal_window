@@ -715,6 +715,7 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         self.hide()
         self.window = MainWindow()
         self.window.show()
+        self.ui.pushButton_cancel.clicked.connect(self.Close)
     def DWG_set_ok(self):
         for i in range(0, len(draft_gen_data)):
             del draft_gen_data[-1]
@@ -771,6 +772,10 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         #         # QtWidgets.QCloseEvent.ignore()
         # else:
         #     self.reply = QMessageBox.question(self, "錯誤", "設定未完成", QMessageBox.Yes)
+    def close(self):
+        self.hide()
+        self.window = MainWindow()
+        self.window.show()
 
 # 執行
 if __name__ == '__main__':

@@ -199,7 +199,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "鋁窗結構自動化設計系統"))
         self.label_4.setText(_translate("MainWindow", "2.窗體生成(Generate The BOX)"))
         self.label_6.setText(_translate("MainWindow", "3.工程圖和BOM表輸出(Engineering Draft and  Bill of Material Output) )"))
         self.label_7.setText(_translate("MainWindow", "4.系統功能設定(System functions)"))
@@ -402,7 +402,7 @@ class creat (object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "自動化設計系統_輸入參數"))
         self.label_2.setText(_translate("MainWindow", "歡迎使用自動化設計系統，請依照提示順序操作\n"
                                                       "Welcome to Automated Designing System. Please use the system STEP by STEP."))
         item = self.tableWidget.verticalHeaderItem(0)
@@ -483,14 +483,14 @@ class about (object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "自動化設計系統_關於"))
         self.label.setText(_translate("MainWindow", "\'\'\'        本系統為國立高雄科技大學(第一校區)產品與自動化實驗室與\n"
                                                     "        正勤鋁業有限公司以科技部產學合作計畫開發\n"
                                                     "        著作所有，請勿侵權\n"
                                                     "\n"
                                                     "        開發者:\n"
                                                     "\n"
-                                                    "        科技部計畫編號:\n"
+                                                    "        科技部計畫編號:MOST 110-2813-C-992-071-E\n"
                                                     "\n"
                                                     "\n"
                                                     "        This Automated Design System is developed by Product \n"
@@ -503,7 +503,7 @@ class about (object):
                                                     "\n"
                                                     "        Developer: \n"
                                                     "\n"
-                                                    "        MOST Project serial:MOST \'\'\'"))
+                                                    "        MOST Project serial:MOST 110-2813-C-992-071-E\'\'\'"))
 class Window_dwg(object):
     def setupUi(self, DWG_SET_WINDOW):
         DWG_SET_WINDOW.setObjectName("DWG_SET_WINDOW")
@@ -795,7 +795,7 @@ class Window_dwg(object):
 
     def retranslateUi(self, DWG_SET_WINDOW):
         _translate = QtCore.QCoreApplication.translate
-        DWG_SET_WINDOW.setWindowTitle(_translate("DWG_SET_WINDOW", "MainWindow"))
+        DWG_SET_WINDOW.setWindowTitle(_translate("DWG_SET_WINDOW", "自動化設計系統_輸入圖面參數"))
         self.label_13.setText(_translate("DWG_SET_WINDOW", "SCALE:由系統自行運算"))
         self.pushButton_set.setText(_translate("DWG_SET_WINDOW", "確認參數(Set)"))
         self.pushButton_clear.setText(_translate("DWG_SET_WINDOW", "清除參數(Clear)"))
