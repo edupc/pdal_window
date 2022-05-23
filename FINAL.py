@@ -687,6 +687,10 @@ class About(QtWidgets.QMainWindow, about):
         super(About, self).__init__()  # 繼承
         self.ui = about()
         self.ui.setupUi(self)
+    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
+        self.hide()
+        self.window = MainWindow()
+        self.window.show()
 # DWG介面
 class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
     def __init__(self):
@@ -773,6 +777,10 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         # else:
         #     self.reply = QMessageBox.question(self, "錯誤", "設定未完成", QMessageBox.Yes)
     def close(self):
+        self.hide()
+        self.window = MainWindow()
+        self.window.show()
+    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         self.hide()
         self.window = MainWindow()
         self.window.show()
