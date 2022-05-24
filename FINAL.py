@@ -482,7 +482,7 @@ class Create(QtWidgets.QMainWindow, creat):
         self.ui.setupUi(self)
         self.ui.pushButton_set_up.clicked.connect(self.set_ok)
         # --------------圖片
-        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '\\window_test_image'))
+        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s'% gvar.color_picture[0]))
         # --------------根據框框大小縮放圖片
         self.ui.label_window_pic.setScaledContents(True)
         self.ui.pushButton_re.clicked.connect(self.reset)
@@ -528,51 +528,76 @@ class Create(QtWidgets.QMainWindow, creat):
 
 
     def insert_table(self):
+        if self.ui.lineEdit_W.text() != '' and self.ui.lineEdit_H.text() != ''and self.ui.lineEdit_Quantity.text() != '':
+            h = self.ui.lineEdit_H.text()
+            w = self.ui.lineEdit_W.text()
+            q = self.ui.lineEdit_Quantity.text()
+            if int(h)<= 200:
+                self.reply = QMessageBox.question(self, "錯誤", "高度數值過小", QMessageBox.Yes)
+                print('No_Set_All')
+            elif int(h)>=2000:
+                self.reply = QMessageBox.question(self, "錯誤", "高度數值過大", QMessageBox.Yes)
+                print('No_Set_All')
+            elif int(w)<=200:
+                self.reply = QMessageBox.question(self, "錯誤", "寬度數值過小", QMessageBox.Yes)
+                print('No_Set_All')
+            elif int(w)>=2000:
+                self.reply = QMessageBox.question(self, "錯誤", "寬度數值過大", QMessageBox.Yes)
+                print('No_Set_All')
+            else:
+                type = self.ui.comboBox_type.currentText()
+                # 設定參數tape,w,h,q,
+                self.set_number()
+                if self.measure_check == True:
+                    # 抓取參數寫入表格(number,0123)
+                    self.ui.tableWidget.setItem(self.number, 0, QTableWidgetItem(type))
+                    self.ui.tableWidget.setItem(self.number, 1, QTableWidgetItem(h))
+                    self.ui.tableWidget.setItem(self.number, 2, QTableWidgetItem(w))
+                    self.ui.tableWidget.setItem(self.number, 3, QTableWidgetItem(q))
+                    # 設定輸入文字置中以及上下置中
+                    self.ui.tableWidget.item(self.number, 0).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 1).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 2).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 3).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    # 設定執行1次的時候參數+1,和格子增加參數值
+                    self.number += 1
+                    self.ui.tableWidget.setRowCount(self.number + 1)
+                    print(type, w, h, q)
+                    print(self.number, self.measure_check)
+                elif self.measure_check == False:
+                    # 假設格子參數小於0那參數重新寫成0
+                    self.number = 0
+                    self.ui.tableWidget.setRowCount(self.number + 2)
+                    self.ui.tableWidget.setItem(self.number, 0, QTableWidgetItem(type))
+                    self.ui.tableWidget.setItem(self.number, 1, QTableWidgetItem(h))
+                    self.ui.tableWidget.setItem(self.number, 2, QTableWidgetItem(w))
+                    self.ui.tableWidget.setItem(self.number, 3, QTableWidgetItem(q))
+                    self.ui.tableWidget.item(self.number, 0).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 1).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 2).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.ui.tableWidget.item(self.number, 3).setTextAlignment(
+                        QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    self.number = 1
+                    print(self.number, self.measure_check)
 
-        h = self.ui.lineEdit_H.text()
-        w = self.ui.lineEdit_W.text()
-        q = self.ui.lineEdit_Quantity.text()
-        type = self.ui.comboBox_type.currentText()
-        # 設定參數tape,w,h,q,
-        self.set_number()
-        if self.measure_check == True:
-            # 抓取參數寫入表格(number,0123)
-            self.ui.tableWidget.setItem(self.number, 0, QTableWidgetItem(type))
-            self.ui.tableWidget.setItem(self.number, 1, QTableWidgetItem(h))
-            self.ui.tableWidget.setItem(self.number, 2, QTableWidgetItem(w))
-            self.ui.tableWidget.setItem(self.number, 3, QTableWidgetItem(q))
-            # 設定輸入文字置中以及上下置中
-            self.ui.tableWidget.item(self.number, 0).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 1).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 2).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 3).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            # 設定執行1次的時候參數+1,和格子增加參數值
-            self.number += 1
-            self.ui.tableWidget.setRowCount(self.number + 1)
-            print(type, w, h, q)
-            print(self.number,self.measure_check)
-        elif self.measure_check == False:
-            # 假設格子參數小於0那參數重新寫成0
-            self.number = 0
-            self.ui.tableWidget.setRowCount(self.number + 2)
-            self.ui.tableWidget.setItem(self.number, 0, QTableWidgetItem(type))
-            self.ui.tableWidget.setItem(self.number, 1, QTableWidgetItem(h))
-            self.ui.tableWidget.setItem(self.number, 2, QTableWidgetItem(w))
-            self.ui.tableWidget.setItem(self.number, 3, QTableWidgetItem(q))
-            self.ui.tableWidget.item(self.number, 0).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 1).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 2).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.ui.tableWidget.item(self.number, 3).setTextAlignment(
-                QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.number = 1
-            print(self.number,self.measure_check)
+
+        elif self.ui.lineEdit_H.text() == '':
+            self.reply = QMessageBox.question(self, "錯誤", "高度尚未設定", QMessageBox.Yes)
+            print('No_Set_All')
+        elif self.ui.lineEdit_W.text() == '':
+            self.reply = QMessageBox.question(self, "錯誤", "寬度尚未設定", QMessageBox.Yes)
+            print('No_Set_All')
+        elif self.ui.lineEdit_Quantity.text() == '':
+            self.reply = QMessageBox.question(self, "錯誤", "數量尚未輸入", QMessageBox.Yes)
+            print('No_Set_All')
+
     def generateMenu(self, pos):
         # 計算有多少條數據，默認-1,self.number
 

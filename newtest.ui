@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>990</width>
-    <height>568</height>
+    <width>1010</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -16,16 +19,22 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1010</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>990</width>
-    <height>568</height>
+    <width>1010</width>
+    <height>600</height>
    </size>
   </property>
   <property name="sizeIncrement">
    <size>
-    <width>990</width>
-    <height>568</height>
+    <width>1010</width>
+    <height>600</height>
    </size>
   </property>
   <property name="focusPolicy">
@@ -78,9 +87,14 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
      <rect>
       <x>260</x>
       <y>70</y>
-      <width>421</width>
-      <height>451</height>
+      <width>441</width>
+      <height>481</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+     </font>
     </property>
     <row>
      <property name="text">
@@ -144,7 +158,7 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       <x>10</x>
       <y>70</y>
       <width>244</width>
-      <height>468</height>
+      <height>481</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -166,6 +180,12 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
      </item>
      <item>
       <widget class="QComboBox" name="comboBox_type">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <item>
         <property name="text">
          <string>T0</string>
@@ -197,7 +217,14 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_H"/>
+      <widget class="QLineEdit" name="lineEdit_H">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_5">
@@ -213,7 +240,14 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_W"/>
+      <widget class="QLineEdit" name="lineEdit_W">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_Quantity">
@@ -232,7 +266,14 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_Quantity"/>
+      <widget class="QLineEdit" name="lineEdit_Quantity">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">
@@ -299,7 +340,13 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_color"/>
+      <widget class="QLineEdit" name="lineEdit_color">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_set">
@@ -343,28 +390,15 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>701</x>
       <y>70</y>
       <width>302</width>
-      <height>449</height>
+      <height>511</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -390,7 +424,7 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
        </property>
        <property name="font">
         <font>
-         <family>AcadEref</family>
+         <family>微軟正黑體</family>
          <pointsize>60</pointsize>
         </font>
        </property>
@@ -436,7 +470,7 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>990</width>
+     <width>1010</width>
      <height>21</height>
     </rect>
    </property>
