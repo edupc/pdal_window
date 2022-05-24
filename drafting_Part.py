@@ -110,14 +110,15 @@ def projection_parameter_calculation(width, height, depth, papersize, scale):
     # drafting_view_center_data.append(
     #     [drafting_area_centerX + h_scale * 0.5 + d_scale * 0.5 + gvar.box_draft_X_clearence,
     #      drafting_area_centerY])  # right view
-    drafting_view_center_data.append([drafting_area_centerX+25, drafting_area_centerY])
-    drafting_view_center_data.append([drafting_area_centerX+25, drafting_area_centerY + gvar.depth / 2])
-    drafting_view_center_data.append([drafting_area_centerX+25, drafting_area_centerY - gvar.depth / 2])
-    drafting_view_center_data.append([(drafting_area_centerX - gvar.depth / 2)+25, drafting_area_centerY])
-    drafting_view_center_data.append([(drafting_area_centerX + gvar.depth / 2)+25, drafting_area_centerY])
+    drafting_view_center_data.append([drafting_area_centerX + 25, drafting_area_centerY])
+    drafting_view_center_data.append([drafting_area_centerX + 25, drafting_area_centerY + gvar.depth / 2])
+    drafting_view_center_data.append([drafting_area_centerX + 25, drafting_area_centerY - gvar.depth / 2])
+    drafting_view_center_data.append([(drafting_area_centerX - gvar.depth / 2) + 25, drafting_area_centerY])
+    drafting_view_center_data.append([(drafting_area_centerX + gvar.depth / 2) + 25, drafting_area_centerY])
     drafting_view_center_data.append([(drafting_area_centerX + 150), drafting_area_centerY])
     return [drafting_view_center_data, scale_tmp,
             scale_recalibration_flag]  # return center_data,scale,recalibration flag
+
 
 def insert_picture(part, face):
     catapp = win32.Dispatch("CATIA.Application")
@@ -197,7 +198,7 @@ def insert_picture(part, face):
         picture = DrawingPicture.Add(origin_dir, 0, 0)
         width_p = picture.width
         height_p = picture.height
-        picture.x = - picture.width / 2 - gvar.height/2
+        picture.x = - picture.width / 2 - gvar.height / 2
         picture.y = - picture.height / 2 - gvar.width / 2 + 3 / 2
     elif part == 'front':
         drawingview_2 = drawingsheet.Views
@@ -207,13 +208,10 @@ def insert_picture(part, face):
         picture = DrawingPicture.Add(origin_dir, 0, 0)
         width_p = picture.width
         height_p = picture.height
-        picture.x = - picture.width / 2 - gvar.height/2
+        picture.x = - picture.width / 2 - gvar.height / 2
         picture.y = - picture.height / 2
 
-
-
-
-#------------------------------------------執行程式碼
+# ------------------------------------------執行程式碼
 # window_gen_data.append(gvar.width)
 # window_gen_data.append(gvar.height)
 # window_gen_data.append(gvar.depth)
@@ -231,6 +229,6 @@ def insert_picture(part, face):
 
 # draft.window_full_projection_from_template(0, scale)  # 組合圖擺圖
 # draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
-#--------------------------------------------------------------------------------執行程式碼
+# --------------------------------------------------------------------------------執行程式碼
 
 # insert_picture('front', "Front view")

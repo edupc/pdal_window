@@ -183,7 +183,6 @@ def add_drafting_infomation(draft_info, box_info):
 # add_drafting_infomation(0,0)
 
 
-
 def window_part(drawingview_para, scale_p, DID):
     # view_name = ['Front view', 'Mtplt view', 'Rear view', 'Top view', 'Bottom view', 'Left view', 'Right view']
     drawingview_para = drawingview_para  #
@@ -292,7 +291,7 @@ def window_part(drawingview_para, scale_p, DID):
             selection.Clear()
     elif DID == "left.CATPart":
         drawingviewgenerativebehavior1.DefineFrontView(0, 1, 0, 0, 0, 1)  # Vector Direction Value
-        drawingview1.Angle = 3.141593/2
+        drawingview1.Angle = 3.141593 / 2
         drawingviewgenerativebehavior1.Update()
         # ----------------------------------------------------投影前視圖
         drawingview1 = drawingviews1.Item('Front view')
@@ -306,7 +305,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -343,7 +342,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -382,7 +381,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -421,7 +420,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -459,7 +458,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -496,7 +495,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -533,7 +532,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -572,7 +571,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -610,7 +609,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -647,7 +646,7 @@ def window_part(drawingview_para, scale_p, DID):
 
         view_name = ['Top view', 'Bottom view', 'Left view', 'Right view']
         # for i in range(1, len(drawingview_para)-1):
-        for i in range(1, len(drawingview_para)-1):
+        for i in range(1, len(drawingview_para) - 1):
             print(i)
             drawingview3 = drawingviews1.Add('AutomaticNaming')
             drawingview3.X = drawingview_para[i][0]
@@ -695,4 +694,3 @@ def window_part(drawingview_para, scale_p, DID):
     specViewer.Reframe()
 
     print('window_full_projection_from_template_set')
-

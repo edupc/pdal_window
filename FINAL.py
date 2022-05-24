@@ -1,4 +1,4 @@
-import os,sys,win32
+import os, sys, win32
 
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtWidgets import QMessageBox, QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView
@@ -7,16 +7,17 @@ import globals_var as gvar
 import drafting as draft
 import drafting_Part as drafting_p
 import drafting_Dim as drafting_d
-from untitled import Ui_MainWindow, creat,Window_dwg,about
+from untitled import Ui_MainWindow, creat, Window_dwg, about
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-#---------------------------------------------------------------資料空串列
+# ---------------------------------------------------------------資料空串列
 window_gen_data = []
-draft_gen_data = []#標題欄輸入值
-bom_gen_data = {}#bom表輸入值
+draft_gen_data = []  # 標題欄輸入值
+bom_gen_data = {}  # bom表輸入值
 bom_whd_value = []
 bom_edit = []
+
 
 # 主介面
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -39,7 +40,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_setup_dwg.clicked.connect(self.open_dwg)
         self.ui.pushButton_start_dwg.clicked.connect(self.create_window_Dwg)
 
-        #self.ui.pushButton_start_dwg.clicked.connect(self.Dwg_Winddow)
+        # self.ui.pushButton_start_dwg.clicked.connect(self.Dwg_Winddow)
 
     # 關閉量測介面
     def Close(self):
@@ -81,7 +82,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         env.Generative_Sheetmetal_Design()
 
         self.full_save_dir = gvar.full_save_dir
-        wc.part_open(gvar.AL_Window_name[0],self.full_save_dir)
+        wc.part_open(gvar.AL_Window_name[0], self.full_save_dir)
         draft.add_drafting_infomation(draft_gen_data, 0)
         window_gen_data.append(gvar.width)
         window_gen_data.append(gvar.height)
@@ -96,7 +97,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             [center_data, scale, rescale_flag] = drafting_p.projection_parameter_calculation(0, 0, 0, 'A4', scale)
             print(scale)
         print(center_data)
-
 
         draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
         drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
@@ -165,17 +165,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 scale = scale + 2
         print("DWG_finished")
 
-
-
-
-        #EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
+        # EXCEAL_BOM-------------------------------------------------------------------------------------------------------------
         print(draft_gen_data)
         # Excel_Bom(draft_gen_data)
         # 我沒辦法理解這個QQ
         import bom
-        bom.Excel_Bom(draft_gen_data,self.full_save_dir)
+        bom.Excel_Bom(draft_gen_data, self.full_save_dir)
 
-#------------------------------------------------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------------------------
     # catia執行檔
     def create_window(self):
 
@@ -185,11 +182,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         env.Part_Design()
         env.Product_Assembly()
         show_name_1 = ["following.1", 'left.1', 'right.1', 'top.1', 'small_top.1', 'small_left.1', 'small_right.1',
-                     'small_following.1','wheel_1.1', 'wheel_2.1', 'small2_top.1', 'small2_left.1', 'small2_right.1',
-                     'small2_following.1', 'wheel_3.1', 'wheel_4.1']
-        show_name_2 = ["following", 'left', 'right', 'top', 'small_top', 'small_left', 'small_right','small_following',
-                     'wheel_1', 'wheel_2', 'small2_top', 'small2_left', 'small2_right','small2_following', 'wheel_3',
-                     'wheel_4']
+                       'small_following.1', 'wheel_1.1', 'wheel_2.1', 'small2_top.1', 'small2_left.1', 'small2_right.1',
+                       'small2_following.1', 'wheel_3.1', 'wheel_4.1']
+        show_name_2 = ["following", 'left', 'right', 'top', 'small_top', 'small_left', 'small_right', 'small_following',
+                       'wheel_1', 'wheel_2', 'small2_top', 'small2_left', 'small2_right', 'small2_following', 'wheel_3',
+                       'wheel_4']
 
         print(gvar.width, gvar.height)
         self.env = wc.set_CATIA_workbench_env()
@@ -234,10 +231,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         wc.open_assembly()
 
-        for i in range(0,4):
+        for i in range(0, 4):
             print(show_name_2[i])
-            wc.assembly_open_file(self.full_save_dir, "%s"%show_name_2[i], 0)
-            wc.saveas_specify_target(self.full_save_dir, "%s"%show_name_2[i], 'CATPart')
+            wc.assembly_open_file(self.full_save_dir, "%s" % show_name_2[i], 0)
+            wc.saveas_specify_target(self.full_save_dir, "%s" % show_name_2[i], 'CATPart')
         for k in range(0, 4):
             print(show_name_1[k])
             wc.show('%s' % show_name_1[k])
@@ -249,15 +246,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         wc.add_offset_assembly("left", "top", gvar.width_W, "yz plane")  # 偏移組合(零件一,零件二,距離,元素)
         wc.Zoom_view()
-        wc.add_offset_assembly("left", "top", 0 , "err plane")
+        wc.add_offset_assembly("left", "top", 0, "err plane")
         wc.Zoom_view()
-        wc.add_offset_assembly("left", "top", 42.8+1.51, "zx plane")
+        wc.add_offset_assembly("left", "top", 42.8 + 1.51, "zx plane")
         wc.Zoom_view()
         wc.add_offset_assembly("right", "top", -gvar.width_W, "yz plane")
         wc.Zoom_view()
         wc.add_offset_assembly("right", "top", -gvar.height_H, "xy plane")
         wc.Zoom_view()
-        wc.add_offset_assembly("right", "top", 42.8-1.49, "zx plane")
+        wc.add_offset_assembly("right", "top", 42.8 - 1.49, "zx plane")
         wc.Zoom_view()
         wc.add_offset_assembly("following", "top", 0, "yz plane")
         wc.Zoom_view()
@@ -267,17 +264,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.Zoom_view()
 
         for i in range(1, 3):
-            wc.test_3('Product1', 'top', 'Product1', 'Standard_3', 'standard_3_%s' % i,3)
-            wc.test_3('Product1', 'top', 'Product1', 'Standard_20', 'standard_20_%s' % i,3)
-            wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'standard_8_%s' % i,3)
-            wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'standard_2_%s' % i,3)
+            wc.test_3('Product1', 'top', 'Product1', 'Standard_3', 'standard_3_%s' % i, 3)
+            wc.test_3('Product1', 'top', 'Product1', 'Standard_20', 'standard_20_%s' % i, 3)
+            wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'standard_8_%s' % i, 3)
+            wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'standard_2_%s' % i, 3)
             wc.test_3('Product1', 'following', 'Product1', 'Standard_14', 'Standard_13_%s' % i, 3)
             wc.test_3('Product1', 'following', 'Product1', 'Standard_16', 'Standard_15_%s' % i, 3)
             wc.test_3('Product1', 'Standard_14', 'Product1', 'Standard_13', 'Standard_14_%s' % i, 3)
             wc.test_3('Product1', 'Standard_16', 'Product1', 'Standard_15', 'Standard_16_%s' % i, 3)
 
-        wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'central',3)
-        wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'central',3)
+        wc.test_3('Product1', 'top', 'Product1', 'Standard_2', 'central', 3)
+        wc.test_3('Product1', 'top', 'Product1', 'Standard_8', 'central', 3)
         wc.test_3('Product1', 'top', 'Product1', 'Standard_3', 'standard_3_3', 4)
         wc.test_3('Product1', 'top', 'Product1', 'Standard_20', 'standard_20_3', 4)
         wc.test_3('Product1', 'following', 'Product1', 'Standard_1', 'Standard_1_1', 3)
@@ -287,7 +284,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # -------------------------------------------------------------------------------------------------------2
 
         wc.part_open("small_top", system_root + "\\smalll_window")
-        wc.Sideplate_param_change("height", gvar.small_height / 2) # 172.5
+        wc.Sideplate_param_change("height", gvar.small_height / 2)  # 172.5
         wc.Zoom_view()
         wc.part_open("small_left", system_root + "\\smalll_window")
         wc.Sideplate_param_change("width", gvar.small_width / 2)  # 255
@@ -312,7 +309,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             wc.Zoom_view()
 
         wc.open_assembly()
-        for i in range (4,10):
+        for i in range(4, 10):
             wc.assembly_open_file(self.full_save_dir, "%s" % show_name_2[i], 0)
             wc.saveas_specify_target(self.full_save_dir, "%s" % show_name_2[i], 'CATPart')
 
@@ -329,18 +326,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.add_offset_assembly("small_top", "small_left", 20, "last_plane")  # 偏移組合(零件一,零件二,距離,元素)
         wc.add_offset_assembly("small_top", "small_following", 0, "yz plane")
         wc.add_offset_assembly("small_top", "small_following", 0, "zx plane")
-        wc.add_offset_assembly("small_following", "small_left", gvar.small_height / 2 , "yz plane")  # 變數.一半的h#-20.8
-        wc.add_offset_assembly("small_following", "small_left", -31.905+4.225, "xy plane1")  # 變數.w-12.69
+        wc.add_offset_assembly("small_following", "small_left", gvar.small_height / 2, "yz plane")  # 變數.一半的h#-20.8
+        wc.add_offset_assembly("small_following", "small_left", -31.905 + 4.225, "xy plane1")  # 變數.w-12.69
         wc.add_offset_assembly("small_following", "small_left", 31.905, "zx plane")
-        wc.add_offset_assembly("small_left", "small_right", -gvar.small_height-10.8, "yz plane")  # 變數#20.8
+        wc.add_offset_assembly("small_left", "small_right", -gvar.small_height - 10.8, "yz plane")  # 變數#20.8
         wc.add_offset_assembly("small_left", "small_right", 0, "xy plane")
-        wc.add_offset_assembly("small_left", "small_right",-21.255, "zx plane")
+        wc.add_offset_assembly("small_left", "small_right", -21.255, "zx plane")
         wc.add_offset_assembly('wheel_1', 'small_following', 0, 'top_Point2')
         wc.add_offset_assembly('wheel_1', 'small_following', 0, 'Plane_wheel_B')
         wc.add_offset_assembly('wheel_2', 'small_following', 0, 'top_Point3')
         wc.add_offset_assembly('wheel_2', 'small_following', 0, 'Plane_wheel_B')
 
-        for i in range(1,4):
+        for i in range(1, 4):
             wc.test_3('Product2', 'small_left', 'Product2', 'Standard_5', 'Standard_5-%s' % i, 4)
             wc.test_3('Product2', 'small_left', 'Product2', 'Standard_6', 'Standard_6_%s' % i, 3)
             wc.test_3('Product2', 'small_right', 'Product2', 'Standard_22', 'Standard_22_%s' % i, 3)
@@ -374,7 +371,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             wc.saveas_close(self.full_save_dir, "Standard_%s" % j, '.CATPart')
 
         wc.open_assembly()
-        for i in range(10,16):
+        for i in range(10, 16):
             wc.assembly_open_file(self.full_save_dir, "%s" % show_name_2[i], 0)
             wc.saveas_specify_target(self.full_save_dir, "%s" % show_name_2[i], 'CATPart')
 
@@ -391,10 +388,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.add_offset_assembly("small2_top", "small2_following", -gvar.small2_width + 48, "xy plane")  # 變數.
         wc.add_offset_assembly("small2_following", "small2_top", 0, "yz plane")
         wc.add_offset_assembly("small2_following", "small2_top", 0, "zx plane")
-        wc.add_offset_assembly("small2_left", "small2_following", gvar.small_height / 2 ,"yz plane")  # 變數.
+        wc.add_offset_assembly("small2_left", "small2_following", gvar.small_height / 2, "yz plane")  # 變數.
         wc.add_offset_assembly("small2_left", "small2_following", -gvar.small2_width / 2, "xy plane")  # 變數.
         wc.add_offset_assembly("small2_left", "small2_following", -13.45, "zx plane")
-        wc.add_offset_assembly("small2_right", "small2_following", -gvar.small_height / 2-10.8, "yz plane")  # 變數.
+        wc.add_offset_assembly("small2_right", "small2_following", -gvar.small_height / 2 - 10.8, "yz plane")  # 變數.
         wc.add_offset_assembly("small2_right", "small2_following", -gvar.small2_width / 2, "xy plane")
         wc.add_offset_assembly("small2_right", "small2_following", 0, "zx plane")
         wc.add_offset_assembly('wheel_3', 'small2_following', 0, 'top_Point2')
@@ -402,9 +399,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.add_offset_assembly('wheel_4', 'small2_following', 0, 'top_Point3')
         wc.add_offset_assembly('wheel_4', 'small2_following', 0, 'Plane_wheel_A')
 
-        for i in range(1,4):
+        for i in range(1, 4):
             wc.test_3('Product3', 'small2_left', 'Product3', 'Standard_4', 'Standard_4_%s' % i, 3)
-            wc.test_3('Product3', 'small2_left', 'Product3', 'Standard_7', 'Standard_7-%s' % i,3)
+            wc.test_3('Product3', 'small2_left', 'Product3', 'Standard_7', 'Standard_7-%s' % i, 3)
             wc.test_3('Product3', 'small2_right', 'Product3', 'Standard_23', 'Standard_23_%s' % i, 3)
             wc.test_3('Product3', 'small2_right', 'Product3', 'Standard_25', 'Standard_25_%s' % i, 3)
             wc.test_3('Product3', 'small2_right', 'Product3', 'Standard_27', 'Standard_27_%s' % i, 3)
@@ -413,7 +410,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for item in self.AL_Window:
             wc.saveas_close(self.full_save_dir, item, '.CATProduct')
 
-     # -------------------------------------------------------------------------------------------------------組合
+        # -------------------------------------------------------------------------------------------------------組合
 
         wc.open_assembly()
         wc.assembly_open_file(self.full_save_dir, "Product1", 1)
@@ -441,7 +438,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         wc.test_2('Product1', 'left', 'Product2', 'small_right', 'Plane_set_end')
         # wc.saveas(self.full_save_dir, 'AL_Window', '.CATProduct')
 
-#-------------------------------------------------------------------------------------------
+        # -------------------------------------------------------------------------------------------
         wc.Zoom_view()
         wc.show_off_Offset()
         wc.saveas(self.full_save_dir, 'AL_Window', '.CATProduct')
@@ -450,7 +447,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for k in range(0, 4):
             wc.closes(self.full_save_dir, gvar.AL_Window_name[k], ".CATProduct")
 
-    #CATIA 圖面執行檔
+    # CATIA 圖面執行檔
     def Dwg_Winddow(self):
         pass
 
@@ -459,17 +456,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.hide()  # 隱藏
         self.window = Create()
         self.window.show()
+
     def open_dwg(self):
         self.hide()  # 隱藏
         self.window = Window_DWG()
         self.window.show()
-
 
     # 開啟關於
     def open_about(self):
         self.hide()  # 隱藏
         self.window = About()
         self.window.show()
+
 
 # Create介面
 class Create(QtWidgets.QMainWindow, creat):
@@ -481,7 +479,7 @@ class Create(QtWidgets.QMainWindow, creat):
         self.ui.setupUi(self)
         self.ui.pushButton_set_up.clicked.connect(self.set_ok)
         # --------------圖片
-        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s'% gvar.color_picture[0]))
+        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[0]))
         # --------------根據框框大小縮放圖片
         self.ui.label_window_pic.setScaledContents(True)
         self.ui.pushButton_re.clicked.connect(self.reset)
@@ -510,7 +508,8 @@ class Create(QtWidgets.QMainWindow, creat):
         self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
         self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
         self.ui.comboBox.activated[int].connect(self.change_color)
-    def change_color(self,ival):
+
+    def change_color(self, ival):
         ival += 1
         if ival == 1:
             # self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
@@ -523,24 +522,23 @@ class Create(QtWidgets.QMainWindow, creat):
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(255,255,255);")
         elif ival == 5:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(0 ,0 ,0);")
-        print('PyQt5 lineEdit_color change:',ival)
-
+        print('PyQt5 lineEdit_color change:', ival)
 
     def insert_table(self):
-        if self.ui.lineEdit_W.text() != '' and self.ui.lineEdit_H.text() != ''and self.ui.lineEdit_Quantity.text() != '':
+        if self.ui.lineEdit_W.text() != '' and self.ui.lineEdit_H.text() != '' and self.ui.lineEdit_Quantity.text() != '':
             h = self.ui.lineEdit_H.text()
             w = self.ui.lineEdit_W.text()
             q = self.ui.lineEdit_Quantity.text()
-            if int(h)<= 200:
+            if int(h) <= 200:
                 self.reply = QMessageBox.question(self, "錯誤", "高度數值過小", QMessageBox.Yes)
                 print('No_Set_All')
-            elif int(h)>=2000:
+            elif int(h) >= 2000:
                 self.reply = QMessageBox.question(self, "錯誤", "高度數值過大", QMessageBox.Yes)
                 print('No_Set_All')
-            elif int(w)<=200:
+            elif int(w) <= 200:
                 self.reply = QMessageBox.question(self, "錯誤", "寬度數值過小", QMessageBox.Yes)
                 print('No_Set_All')
-            elif int(w)>=2000:
+            elif int(w) >= 2000:
                 self.reply = QMessageBox.question(self, "錯誤", "寬度數值過大", QMessageBox.Yes)
                 print('No_Set_All')
             else:
@@ -629,7 +627,6 @@ class Create(QtWidgets.QMainWindow, creat):
         # else:
         # self.ui.tableWidget.cellPressed('123')
 
-
         self.set_number()
         if self.measure_check == True:
             self.row = self.ui.tableWidget.currentRow()
@@ -641,12 +638,12 @@ class Create(QtWidgets.QMainWindow, creat):
             self.number -= 1
             # self.measure_check = True
             # self.ui.tableWidget.setRowCount(self.number)
-            print(self.number,self.measure_check)
+            print(self.number, self.measure_check)
 
         elif self.measure_check == False:
             self.reply = QMessageBox.question(self, "提示", "不可再刪除\nDon't dele", QMessageBox.Yes, )
             if self.reply == QMessageBox.Yes:
-                print(self.number,self.measure_check)
+                print(self.number, self.measure_check)
                 # self.measure_check = True
                 pass
 
@@ -661,6 +658,7 @@ class Create(QtWidgets.QMainWindow, creat):
         # for line in removeline:
         #     self.lines.remove(line)
         # self.settext('删除在左边checkbox中选中的行，使用了一个笨办法取得行号\n，不知道有没有其他可以直接取得行号的方法！')
+
     def set_number(self):
         if self.number >= 0:
             self.measure_check = True
@@ -671,15 +669,15 @@ class Create(QtWidgets.QMainWindow, creat):
     def set_ok(self):
 
         if self.ui.lineEdit_W.text() != '' and self.ui.lineEdit_H.text() != '':
-            gvar.width = float(self.ui.lineEdit_H.text())#這裡W,H寫反，帶修正
-            gvar.height = float(self.ui.lineEdit_W.text())#這裡W,H寫反，帶修正
+            gvar.width = float(self.ui.lineEdit_H.text())  # 這裡W,H寫反，帶修正
+            gvar.height = float(self.ui.lineEdit_W.text())  # 這裡W,H寫反，帶修正
             gvar.width_W = float(self.ui.lineEdit_W.text()) / 2 - 13.65
             gvar.height_H = float(self.ui.lineEdit_H.text()) / 2
             gvar.small_height = float(self.ui.lineEdit_W.text()) / 2 - 49
             gvar.small_width = float(self.ui.lineEdit_H.text()) - 76.49
             gvar.small2_width = float(self.ui.lineEdit_H.text()) - 48.19
             gvar.Quantity = float(self.ui.lineEdit_Quantity.text())
-            print(gvar.width,gvar.height,gvar.Quantity)
+            print(gvar.width, gvar.height, gvar.Quantity)
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:
                 self.hide()
@@ -692,7 +690,6 @@ class Create(QtWidgets.QMainWindow, creat):
         else:
             self.reply = QMessageBox.question(self, "錯誤", "設定未完成", QMessageBox.Yes)
             print('No_Set_All')
-
 
     def close(self):
         self.hide()
@@ -723,6 +720,7 @@ class Create(QtWidgets.QMainWindow, creat):
         # # self.ui.tableWidget.item(self.number, 2).text('')
         # # self.ui.tableWidget.item(self.number, 3).text('')
 
+
 # DWG介面
 class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
     def __init__(self):
@@ -732,6 +730,7 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         self.ui.pushButton_set.clicked.connect(self.DWG_set_ok)
         self.ui.pushButton_clear.clicked.connect(self.CLEAR)
         self.ui.pushButton_cancel.clicked.connect(self.Close)
+
     def CLEAR(self):
         self.ui.lineEdit_1.setText('2021/02/04')
         # self.ui.lineEdit_2.setText('%s'%gvar.)
@@ -739,7 +738,7 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         self.ui.lineEdit_4.setText('昱瑋')
         self.ui.lineEdit_5.setText('昱瑋')
         self.ui.lineEdit_6.setText('Aluminum')
-        self.ui.lineEdit_7.setText('%s'%int(gvar.Quantity))
+        self.ui.lineEdit_7.setText('%s' % int(gvar.Quantity))
         self.ui.lineEdit_8.setText('自動化產品設計系統')
         self.ui.lineEdit_9.setText('TEST1')
         self.ui.lineEdit_10.setText('mm')
@@ -747,71 +746,49 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         # self.ui.lineEdit_12.setText('')
         # self.ui.lineEdit_13.setText('')
         print('Reset_ALL')
+
     def Close(self):
         self.hide()
         self.window = MainWindow()
         self.window.show()
         self.ui.pushButton_cancel.clicked.connect(self.Close)
+
     def DWG_set_ok(self):
         for i in range(0, len(draft_gen_data)):
             del draft_gen_data[-1]
         draft_info = [self.ui.lineEdit_1.text(), self.ui.lineEdit_2.text(), self.ui.lineEdit_3.text(),
                       self.ui.lineEdit_4.text(), self.ui.lineEdit_5.text(), self.ui.lineEdit_6.text(),
-                      self.ui.lineEdit_7.text(), self.ui.lineEdit_8.text(),self.ui.lineEdit_9.text(),
-                      self.ui.lineEdit_10.text(),self.ui.lineEdit_11.text()]
+                      self.ui.lineEdit_7.text(), self.ui.lineEdit_8.text(), self.ui.lineEdit_9.text(),
+                      self.ui.lineEdit_10.text(), self.ui.lineEdit_11.text()]
         for i in range(0, len(draft_info)):
             draft_gen_data.append(draft_info[i])
 
         for j in range(0, len(draft_info)):
-            if draft_info[j] == "" :
+            if draft_info[j] == "":
                 self.measure_dwg_check = False
             else:
                 self.measure_dwg_check = True
-        if self.measure_dwg_check== True:
+        if self.measure_dwg_check == True:
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:
                 self.hide()
                 self.window = MainWindow()
                 self.window.show()
-                print(draft_gen_data,self.measure_dwg_check,'圖面設定完成')
+                print(draft_gen_data, self.measure_dwg_check, '圖面設定完成')
 
             elif self.reply == QMessageBox.No:
                 print('請設定好您的參數')
                 pass
         elif self.measure_dwg_check == False:
-            self.reply = QMessageBox.question(self, "提示", "Error\n請完整輸入參數", QMessageBox.Yes,)
+            self.reply = QMessageBox.question(self, "提示", "Error\n請完整輸入參數", QMessageBox.Yes, )
             if self.reply == QMessageBox.Yes:
                 pass
 
-        # if draft_info != []:
-        #     self.reply = QMessageBox.question(self, "提示", "WARNING',2D plot generation Cancelled”", QMessageBox.Yes)
-        #     if self.reply == QMessageBox.Yes:
-        #         self.hide()
-        #         self.window = Window_DWG()
-        #         self.window.show()
-        #         print('Error')
-        #         print(draft_gen_data)
-        # else:
-
-        # draft_gen_data= {'出圖日期':self.ui.linei.lineEdit_13.text()]
-
-
-        # if self.ui. != '' and self.ui.lineEdit_H.text() != '':
-        #
-        #     self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
-        #     if self.reply == QMessageBox.Yes:
-        #         self.hide()
-        #         self.window = MainWindow()
-        #         self.window.show()
-        #     elif self.reply == QMessageBox.No:
-        #         pass
-        #         # QtWidgets.QCloseEvent.ignore()
-        # else:
-        #     self.reply = QMessageBox.question(self, "錯誤", "設定未完成", QMessageBox.Yes)
     def close(self):
         self.hide()
         self.window = MainWindow()
         self.window.show()
+
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         self.hide()
         self.window = MainWindow()

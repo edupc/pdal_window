@@ -239,7 +239,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_2.setText(_translate("MainWindow", "歡迎使用自動化設計系統，請依照提示順序操作\n"
-"Welcome to Automated Designing System. Please use the system STEP by STEP."))
+                                                      "Welcome to Automated Designing System. Please use the system STEP by STEP."))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.tableWidget.verticalHeaderItem(1)
@@ -275,14 +275,14 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(3, _translate("MainWindow", "材料_White"))
         self.comboBox.setItemText(4, _translate("MainWindow", "材料_black"))
         self.pushButton_set.setText(_translate("MainWindow", "插入資料\n"
-"(Insert Data)"))
+                                                             "(Insert Data)"))
         self.pushButton_delete.setText(_translate("MainWindow", "刪除所選資料\n"
-"(Delete Selected Data)"))
+                                                                "(Delete Selected Data)"))
         self.pushButton_re.setText(_translate("MainWindow", "重新設定資料\n"
-" (Re)"))
+                                                            " (Re)"))
         self.label_window_pic.setText(_translate("MainWindow", "正勤00\n"
-"鋁業00"))
+                                                               "鋁業00"))
         self.pushButton_set_up.setText(_translate("MainWindow", "設定參數\n"
-"(Set Parameter)"))
+                                                                "(Set Parameter)"))
         self.pushButton_cancel.setText(_translate("MainWindow", "離開\n"
-"(Exit)"))
+                                                                "(Exit)"))
