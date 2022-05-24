@@ -3,7 +3,6 @@ import os,sys,win32
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtWidgets import QMessageBox, QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView
 import Window_Catia as wc
-from bom import Excel_Bom
 import globals_var as gvar
 import drafting as draft
 import drafting_Part as drafting_p
@@ -12,13 +11,14 @@ from untitled import Ui_MainWindow, creat,Window_dwg,about
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-from PyQt5.QtGui import *
 #---------------------------------------------------------------資料空串列
 window_gen_data = []
 draft_gen_data = []#標題欄輸入值
 bom_gen_data = {}#bom表輸入值
 bom_whd_value = []
 bom_edit = []
+
+# 主介面
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # 在這裏的是系統開啟會重新re過一次的動作
@@ -71,6 +71,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.route = QtWidgets.QFileDialog.getExistingDirectory(None, "選取資料夾")
         self.ui.lineEdit_file_root.setText(self.route)
 
+    # catia圖面執行檔
     def create_window_Dwg(self):
 
         wc.clear_all_windows()
@@ -173,8 +174,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # 我沒辦法理解這個QQ
         import bom
         bom.Excel_Bom(draft_gen_data,self.full_save_dir)
-
-
 
 #------------------------------------------------------------------------------------------------------------------------
     # catia執行檔
@@ -472,7 +471,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.window = About()
         self.window.show()
 
-
+# Create介面
 class Create(QtWidgets.QMainWindow, creat):
 
     # 在這裏的是系統開啟會重新re過一次的動作
@@ -706,9 +705,9 @@ class Create(QtWidgets.QMainWindow, creat):
         self.window.show()
 
     def reset(self):
-        self.ui.lineEdit_H.setText('')
-        self.ui.lineEdit_W.setText('')
-        self.ui.lineEdit_Quantity.setText('')
+        self.ui.lineEdit_H.setText('500')
+        self.ui.lineEdit_W.setText('500')
+        self.ui.lineEdit_Quantity.setText('5')
         self.ui.comboBox_type.setCurrentIndex(0)
         self.ui.tableWidget.clearContents()
         self.number = 0
@@ -724,16 +723,6 @@ class Create(QtWidgets.QMainWindow, creat):
         # # self.ui.tableWidget.item(self.number, 2).text('')
         # # self.ui.tableWidget.item(self.number, 3).text('')
 
-# about介面
-class About(QtWidgets.QMainWindow, about):
-    def __init__(self):
-        super(About, self).__init__()  # 繼承
-        self.ui = about()
-        self.ui.setupUi(self)
-    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
-        self.hide()
-        self.window = MainWindow()
-        self.window.show()
 # DWG介面
 class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
     def __init__(self):
@@ -745,12 +734,12 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         self.ui.pushButton_cancel.clicked.connect(self.Close)
     def CLEAR(self):
         self.ui.lineEdit_1.setText('2021/02/04')
-        self.ui.lineEdit_2.setText('HRC20')
+        # self.ui.lineEdit_2.setText('%s'%gvar.)
         self.ui.lineEdit_3.setText('昱瑋')
         self.ui.lineEdit_4.setText('昱瑋')
         self.ui.lineEdit_5.setText('昱瑋')
         self.ui.lineEdit_6.setText('Aluminum')
-        self.ui.lineEdit_7.setText('1')
+        self.ui.lineEdit_7.setText('%s'%int(gvar.Quantity))
         self.ui.lineEdit_8.setText('自動化產品設計系統')
         self.ui.lineEdit_9.setText('TEST1')
         self.ui.lineEdit_10.setText('mm')
@@ -827,6 +816,20 @@ class Window_DWG(QtWidgets.QMainWindow, Window_dwg):
         self.hide()
         self.window = MainWindow()
         self.window.show()
+
+
+# about介面
+class About(QtWidgets.QMainWindow, about):
+    def __init__(self):
+        super(About, self).__init__()  # 繼承
+        self.ui = about()
+        self.ui.setupUi(self)
+
+    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
+        self.hide()
+        self.window = MainWindow()
+        self.window.show()
+
 
 # 執行
 if __name__ == '__main__':
