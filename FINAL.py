@@ -509,6 +509,32 @@ class Create(QtWidgets.QMainWindow, creat):
         self.ui.lineEdit_Quantity.setValidator(my_validator)
         self.lines = []
 
+        self.ui.comboBox.activated[int].connect(self.change_color)
+    def change_color(self,ival):
+        # global ival
+        ival += 1
+        print(ival)
+        if ival == 1:
+            # self.lineEdit_color.s
+            self.lineEdit_color.setStyleSheet("QLineEdit"
+                                "{"
+                                "background : lightblue;"
+                                "}")
+        elif ival == 2:
+            self.my_line_edit.setStyleSheet(
+                """QLineEdit { background-color: green; color: white }""")
+        elif ival == 3:
+            self.my_line_edit.setStyleSheet(
+                """QLineEdit { background-color: green; color: white }""")
+        elif ival == 4:
+            self.my_line_edit.setStyleSheet(
+                """QLineEdit { background-color: green; color: white }""")
+        elif ival == 5:
+            self.my_line_edit.setStyleSheet(
+                """QLineEdit { background-color: green; color: white }""")
+
+
+        print('PyQt5 button click:',ival)
     def insert_table(self):
 
         h = self.ui.lineEdit_H.text()

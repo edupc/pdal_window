@@ -144,23 +144,10 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       <x>10</x>
       <y>70</y>
       <width>244</width>
-      <height>451</height>
+      <height>459</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
      <item>
       <widget class="QLabel" name="label_4">
        <property name="font">
@@ -248,6 +235,73 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       <widget class="QLineEdit" name="lineEdit_Quantity"/>
      </item>
      <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="tabletTracking">
+        <bool>false</bool>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="maxVisibleItems">
+        <number>19</number>
+       </property>
+       <property name="duplicatesEnabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>塗裝1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>塗裝2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>塗裝3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>塗裝4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>塗裝5</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_color"/>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton_set">
        <property name="font">
         <font>
@@ -289,9 +343,22 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
        </property>
       </widget>
      </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -362,6 +429,16 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QOpenGLWidget" name="openGLWidget">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>400</y>
+      <width>300</width>
+      <height>200</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
