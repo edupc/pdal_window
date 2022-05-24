@@ -508,33 +508,25 @@ class Create(QtWidgets.QMainWindow, creat):
         my_validator = QtGui.QRegExpValidator(my_regex, self.ui.lineEdit_Quantity)
         self.ui.lineEdit_Quantity.setValidator(my_validator)
         self.lines = []
-
+        self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
+        self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
         self.ui.comboBox.activated[int].connect(self.change_color)
     def change_color(self,ival):
-        # global ival
         ival += 1
-        print(ival)
         if ival == 1:
-            # self.lineEdit_color.s
-            self.lineEdit_color.setStyleSheet("QLineEdit"
-                                "{"
-                                "background : lightblue;"
-                                "}")
+            # self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
+            self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
         elif ival == 2:
-            self.my_line_edit.setStyleSheet(
-                """QLineEdit { background-color: green; color: white }""")
+            self.ui.lineEdit_color.setStyleSheet("background-color: rgb(139,131,134);")
         elif ival == 3:
-            self.my_line_edit.setStyleSheet(
-                """QLineEdit { background-color: green; color: white }""")
+            self.ui.lineEdit_color.setStyleSheet("background-color: rgb(205,205,180);")
         elif ival == 4:
-            self.my_line_edit.setStyleSheet(
-                """QLineEdit { background-color: green; color: white }""")
+            self.ui.lineEdit_color.setStyleSheet("background-color: rgb(255,255,255);")
         elif ival == 5:
-            self.my_line_edit.setStyleSheet(
-                """QLineEdit { background-color: green; color: white }""")
+            self.ui.lineEdit_color.setStyleSheet("background-color: rgb(0 ,0 ,0);")
+        print('PyQt5 lineEdit_color change:',ival)
 
 
-        print('PyQt5 button click:',ival)
     def insert_table(self):
 
         h = self.ui.lineEdit_H.text()
@@ -662,7 +654,7 @@ class Create(QtWidgets.QMainWindow, creat):
             gvar.small_height = float(self.ui.lineEdit_W.text()) / 2 - 49
             gvar.small_width = float(self.ui.lineEdit_H.text()) - 76.49
             gvar.small2_width = float(self.ui.lineEdit_H.text()) - 48.19
-            # gvar.Quantity = float(self.ui.lineEdit_Quantity())
+            gvar.Quantity = float(self.ui.lineEdit_Quantity.text())
             print(gvar.width,gvar.height,gvar.Quantity)
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:

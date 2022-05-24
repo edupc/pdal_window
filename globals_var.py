@@ -5,7 +5,7 @@ width = float(500)  # 窗體寬
 height = float(500)  # 窗體高
 width_W = float()   #零件參數
 height_H = float()   #零件參數
-Quantity = float()
+Quantity = float(5)
 # width_dwg = float()
 # height_dwg = float()
 depth=float(112.76)
@@ -25,6 +25,12 @@ small_catia_save = ['small_top', 'small_left', 'small_right', 'small_following']
 small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']  # 名稱再來修訂吧.1235 小玻璃架
 AL_Window = ['Product', 'Product1', 'Product2']
 AL_Window_name = ['AL_Window', 'Product3', 'Product2','Product1']
+
+dim_Quantity=[int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,
+              int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,int(1)*Quantity,
+              int(1)*Quantity,int(1)*Quantity,int(10)*Quantity,int(8)*Quantity]
+print(dim_Quantity[0])
+
 #標註用的不知道是啥
 sideU = "Side_Panel_U"
 sideD = "Side_Panel_D"

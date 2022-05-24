@@ -144,7 +144,7 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       <x>10</x>
       <y>70</y>
       <width>244</width>
-      <height>459</height>
+      <height>468</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -273,27 +273,27 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
        </property>
        <item>
         <property name="text">
-         <string>塗裝1</string>
+         <string>材料_grey61</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>塗裝2</string>
+         <string>材料_LavenderBlush4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>塗裝3</string>
+         <string>材料_LightYellow</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>塗裝4</string>
+         <string>材料_White</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>塗裝5</string>
+         <string>材料_black</string>
         </property>
        </item>
       </widget>
@@ -429,16 +429,6 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>400</y>
-      <width>300</width>
-      <height>200</height>
-     </rect>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
