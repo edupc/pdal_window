@@ -526,19 +526,19 @@ class Create(QtWidgets.QMainWindow, creat):
         if ival == 1:
             # self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
-            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[3]))
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[0]))
         elif ival == 2:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(139,131,134);")
-            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[4]))
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[1]))
         elif ival == 3:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(205,205,180);")
-            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[5]))
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[2]))
         elif ival == 4:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(255,255,255);")
-            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[1]))
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[3]))
         elif ival == 5:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(0 ,0 ,0);")
-            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[2]))
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[4]))
         print('PyQt5 lineEdit_color change:', ival)
 
     def insert_table(self):

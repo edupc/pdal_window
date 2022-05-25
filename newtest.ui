@@ -85,10 +85,10 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>270</x>
       <y>70</y>
-      <width>441</width>
-      <height>481</height>
+      <width>421</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="font">
@@ -157,8 +157,8 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
      <rect>
       <x>10</x>
       <y>70</y>
-      <width>244</width>
-      <height>481</height>
+      <width>251</width>
+      <height>488</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -202,6 +202,96 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
         </property>
        </item>
       </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="font">
+        <font>
+         <family>微軟正黑體</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>設定烤漆顏色</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <property name="font">
+          <font>
+           <family>微軟正黑體</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="tabletTracking">
+          <bool>false</bool>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="maxVisibleItems">
+          <number>19</number>
+         </property>
+         <property name="duplicatesEnabled">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>材料_grey61</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>材料_LavenderBlush4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>材料_LightYellow</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>材料_White</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>材料_black</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_color">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
@@ -276,79 +366,6 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox">
-       <property name="font">
-        <font>
-         <family>微軟正黑體</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="mouseTracking">
-        <bool>false</bool>
-       </property>
-       <property name="tabletTracking">
-        <bool>false</bool>
-       </property>
-       <property name="acceptDrops">
-        <bool>false</bool>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="editable">
-        <bool>false</bool>
-       </property>
-       <property name="maxVisibleItems">
-        <number>19</number>
-       </property>
-       <property name="duplicatesEnabled">
-        <bool>false</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>材料_grey61</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>材料_LavenderBlush4</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>材料_LightYellow</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>材料_White</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>材料_black</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit_color">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButton_set">
        <property name="font">
         <font>
@@ -395,45 +412,13 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>701</x>
-      <y>70</y>
+      <x>700</x>
+      <y>390</y>
       <width>302</width>
-      <height>511</height>
+      <height>131</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label_window_pic">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>50</horstretch>
-         <verstretch>50</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>300</width>
-         <height>300</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>300</width>
-         <height>300</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>微軟正黑體</family>
-         <pointsize>60</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>正勤00
-鋁業00</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="QPushButton" name="pushButton_set_up">
        <property name="font">
@@ -463,6 +448,44 @@ Welcome to Automated Designing System. Please use the system STEP by STEP.</stri
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_window_pic">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>70</y>
+      <width>300</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>50</horstretch>
+      <verstretch>50</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>300</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>300</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>60</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>正勤00
+鋁業00</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
