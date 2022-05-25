@@ -483,11 +483,11 @@ class creat(object):
         self.label_3.setText(_translate("MainWindow", "設定窗體高(height)/mm"))
         self.label_5.setText(_translate("MainWindow", "設定窗體寬(width)/mm"))
         self.label_Quantity.setText(_translate("MainWindow", "輸入型號數量"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "材料_grey61"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "材料_Grey61"))
         self.comboBox.setItemText(1, _translate("MainWindow", "材料_LavenderBlush4"))
         self.comboBox.setItemText(2, _translate("MainWindow", "材料_LightYellow"))
         self.comboBox.setItemText(3, _translate("MainWindow", "材料_White"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "材料_black"))
+        self.comboBox.setItemText(4, _translate("MainWindow", "材料_Black"))
         self.pushButton_set.setText(_translate("MainWindow", "插入資料\n"
                                                              "(Insert Data)"))
         self.pushButton_delete.setText(_translate("MainWindow", "刪除所選資料\n"

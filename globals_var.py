@@ -8,6 +8,7 @@ width_W = float()  # 零件參數
 height_H = float()  # 零件參數
 Quantity = float(5)
 color = ''
+table_number = int()
 # width_dwg = float()
 # height_dwg = float()
 depth = float(112.76)
