@@ -28,7 +28,7 @@ small_catia_save = ['small_top', 'small_left', 'small_right', 'small_following']
 small2_catia_save = ['small2_following', 'small2_left', 'small2_top', 'small2_right']  # 名稱再來修訂吧.1235 小玻璃架
 AL_Window = ['Product', 'Product1', 'Product2']
 AL_Window_name = ['AL_Window', 'Product3', 'Product2', 'Product1']
-color_picture = ['\\window_test_image', '2', '3', '4', '5']
+color_picture = ['\\icon.ico_3.png', '\\icon.ico_4.png', '\\icon.ico_5.png', '\\icon.ico_1.png', '\\icon.ico_2.png']
 dim_Quantity = [int(1) * Quantity, int(1) * Quantity, int(1) * Quantity, int(1) * Quantity, int(1) * Quantity,
                 int(1) * Quantity, int(1) * Quantity, int(1) * Quantity, int(1) * Quantity, int(1) * Quantity,
                 int(1) * Quantity, int(1) * Quantity, int(10) * Quantity, int(8) * Quantity]

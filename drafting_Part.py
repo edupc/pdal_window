@@ -232,3 +232,10 @@ def insert_picture(part, face):
 # --------------------------------------------------------------------------------執行程式碼
 
 # insert_picture('front', "Front view")
+
+def pdf_save(save_dir, name, type):
+    import win32com
+    catapp = win32com.client.Dispatch("CATIA.Application")
+    partdoc = catapp.ActiveDocument
+    # 儲存檔案後關閉
+    partdoc.ExportData("%s\%s.%s" % (save_dir, name, type), type)

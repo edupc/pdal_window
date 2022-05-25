@@ -10,6 +10,7 @@ import drafting_Dim as drafting_d
 from untitled import Ui_MainWindow, creat, Window_dwg, about
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+# import bom
 
 # ---------------------------------------------------------------資料空串列
 window_gen_data = []
@@ -39,7 +40,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.route = ''
         self.ui.pushButton_setup_dwg.clicked.connect(self.open_dwg)
         self.ui.pushButton_start_dwg.clicked.connect(self.create_window_Dwg)
-
+        # print("123")
         # self.ui.pushButton_start_dwg.clicked.connect(self.Dwg_Winddow)
 
     # 關閉量測介面
@@ -75,7 +76,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     # catia圖面執行檔
     def create_window_Dwg(self):
 
-        wc.clear_all_windows()
+        # wc.clear_all_windows()
 
         from Window_Catia import set_CATIA_workbench_env
         env = set_CATIA_workbench_env()
@@ -101,6 +102,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         draft.window_full_projection_from_template(center_data, scale)  # 連接圖面
         drafting_d.model_unfolded_view('front', gvar.width, gvar.height, gvar.depth)
         drafting_p.insert_picture('front', "Front view")
+
+        drafting_p.pdf_save(gvar.full_save_dir,'A4_Window', 'pdf')
+
         wc.close_drafting(self.full_save_dir, 'A4_Window', '.CATDrawing')  # 'C:\\Users\\PDAL-BM-1\\Desktop\\test\\'
         # -----------------------------------------------------------------------------------------------------BIG_windows
         for k in range(0, 4):
@@ -109,7 +113,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             draft.add_drafting_infomation(draft_gen_data, 0)
             draft.window_part(center_data, scale / 1.5, DID)
             drafting_d.model_unfolded_view_part('front', gvar.width, gvar.height, 0, gvar.catia_save[k])
+            drafting_p.pdf_save(gvar.full_save_dir, gvar.catia_save[k], 'pdf')
             wc.close_drafting(self.full_save_dir, gvar.catia_save[k], '.CATDrawing')
+            # drafting_p.pdf_save(gvar.full_save_dir, gvar.catia_save[k], 'pdf')
             wc.part_close()
         # -----------------------------------------------------------------------------------------------------small_catia
         for k in range(0, 4):
@@ -127,7 +133,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             draft.window_part(center_data, scale / 1.5, DID)
             drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0,
                                                 gvar.small_catia_save[k])
+            drafting_p.pdf_save(gvar.full_save_dir, gvar.small_catia_save[k], 'pdf')
             wc.close_drafting(self.full_save_dir, gvar.small_catia_save[k], '.CATDrawing')
+
             wc.part_close()
             if k == 0:
                 scale = scale + 6
@@ -153,7 +161,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             draft.window_part(center_data, scale / 1.5, DID)
             drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0,
                                                 gvar.small2_catia_save[k])
+            drafting_p.pdf_save(gvar.full_save_dir, gvar.small_catia_save[k], 'pdf')
             wc.close_drafting(self.full_save_dir, gvar.small2_catia_save[k], '.CATDrawing')
+            # drafting_p.pdf_save(gvar.full_save_dir, gvar.small2_catia_save[k], 'pdf')
             wc.part_close()
             if k == 0:
                 scale = scale + 6
@@ -478,10 +488,7 @@ class Create(QtWidgets.QMainWindow, creat):
         self.ui = creat()
         self.ui.setupUi(self)
         self.ui.pushButton_set_up.clicked.connect(self.set_ok)
-        # --------------圖片
-        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[0]))
-        # --------------根據框框大小縮放圖片
-        self.ui.label_window_pic.setScaledContents(True)
+
         self.ui.pushButton_re.clicked.connect(self.reset)
         self.ui.pushButton_cancel.clicked.connect(self.close)
         self.ui.pushButton_set.clicked.connect(self.insert_table)
@@ -507,21 +514,31 @@ class Create(QtWidgets.QMainWindow, creat):
         self.lines = []
         self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
         self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
+
         self.ui.comboBox.activated[int].connect(self.change_color)
+        # --------------圖片
+        self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[3]))
+        # --------------根據框框大小縮放圖片
+        self.ui.label_window_pic.setScaledContents(True)
 
     def change_color(self, ival):
         ival += 1
         if ival == 1:
             # self.ui.lineEdit_color.setFocusPolicy(QtCore.Qt.NoFocus)
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(156,156,156);")
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[3]))
         elif ival == 2:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(139,131,134);")
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[4]))
         elif ival == 3:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(205,205,180);")
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[5]))
         elif ival == 4:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(255,255,255);")
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[1]))
         elif ival == 5:
             self.ui.lineEdit_color.setStyleSheet("background-color: rgb(0 ,0 ,0);")
+            self.ui.label_window_pic.setPixmap(QtGui.QPixmap(BASE_DIR + '%s' % gvar.color_picture[2]))
         print('PyQt5 lineEdit_color change:', ival)
 
     def insert_table(self):
@@ -647,6 +664,8 @@ class Create(QtWidgets.QMainWindow, creat):
 
     # 設定設定完成提示框(yes or no)
     def set_ok(self):
+        col_num = self.ui.tableWidget.columnCount()
+        print( col_num+1 )
         # print(gvar.table_number)
         if self.ui.lineEdit_W.text() != '' and self.ui.lineEdit_H.text() != '':
             gvar.width = float(self.ui.lineEdit_H.text())  # 這裡W,H寫反，帶修正

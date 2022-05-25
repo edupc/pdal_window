@@ -52,10 +52,10 @@ class set_CATIA_workbench_env:
         self.catapp = win32.Dispatch("CATIA.Application")
         # add some CATIA-specific settings here (Seeing CATIA Automation manual-Application section)
         self.catapp.DisplayFileAlerts = False
-        self.catapp.Visible = False
+        self.catapp.Visible = True
 
     def Part_Design(self):
-        self.catapp.Visible = False
+        self.catapp.Visible = True
         self.catapp.StartWorkbench(self.env_name[self.Part_Design.__name__])
         try:
             temp = self.catapp.ActiveDocument
@@ -65,7 +65,7 @@ class set_CATIA_workbench_env:
         return
 
     def Product_Assembly(self):
-        self.catapp.Visible = False
+        self.catapp.Visible = True
         self.catapp.StartWorkbench(self.env_name[self.Product_Assembly.__name__])
         try:
             temp = self.catapp.ActiveDocument
@@ -75,7 +75,7 @@ class set_CATIA_workbench_env:
         return
 
     def Generative_Sheetmetal_Design(self):
-        self.catapp.Visible = False
+        self.catapp.Visible = True
         self.catapp.StartWorkbench(self.env_name[self.Generative_Sheetmetal_Design.__name__])
         try:
             temp = self.catapp.ActiveDocument
