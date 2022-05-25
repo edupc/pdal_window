@@ -541,6 +541,8 @@ class Create(QtWidgets.QMainWindow, creat):
             elif int(w) >= 2000:
                 self.reply = QMessageBox.question(self, "錯誤", "寬度數值過大", QMessageBox.Yes)
                 print('No_Set_All')
+            elif int(q) == 0 :
+                self.reply = QMessageBox.question(self, "錯誤", "數量不可於0", QMessageBox.Yes)
             else:
                 type = self.ui.comboBox_type.currentText()
                 # 設定參數tape,w,h,q,
@@ -677,6 +679,21 @@ class Create(QtWidgets.QMainWindow, creat):
             gvar.small_width = float(self.ui.lineEdit_H.text()) - 76.49
             gvar.small2_width = float(self.ui.lineEdit_H.text()) - 48.19
             gvar.Quantity = float(self.ui.lineEdit_Quantity.text())
+            # gvar.color = self.ui.comboBox.itemData()
+            intcolor = self.ui.comboBox.currentIndex()
+            if intcolor == 0:
+                gvar.color ="材料_grey61"
+            elif intcolor == 1:
+                gvar.color ="材料_LavenderBlush4"
+            elif intcolor == 2:
+                gvar.color="材料_LightYellow"
+            elif intcolor == 3:
+                gvar.color="材料_White"
+            elif intcolor == 4:
+                gvar.color="材料_black"
+
+            print('ㄏ%s'% gvar.color)
+            
             print(gvar.width, gvar.height, gvar.Quantity)
             self.reply = QMessageBox.question(self, "提示", "設定完成\nSet Ok", QMessageBox.Yes, QMessageBox.No)
             if self.reply == QMessageBox.Yes:
