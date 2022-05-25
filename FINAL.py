@@ -679,7 +679,7 @@ class Create(QtWidgets.QMainWindow, creat):
             # gvar.color = self.ui.comboBox.itemData()
             intcolor = self.ui.comboBox.currentIndex()
             if intcolor == 0:
-                gvar.color ="材料_rey61"
+                gvar.color ="材料_Rey61"
             elif intcolor == 1:
                 gvar.color ="材料_LavenderBlush4"
             elif intcolor == 2:
