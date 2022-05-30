@@ -161,7 +161,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             draft.window_part(center_data, scale / 1.5, DID)
             drafting_d.model_unfolded_view_part('front', gvar.width - 76.49, gvar.height / 2 - 49, 0,
                                                 gvar.small2_catia_save[k])
-            drafting_p.pdf_save(gvar.full_save_dir, gvar.small_catia_save[k], 'pdf')
+            drafting_p.pdf_save(gvar.full_save_dir, gvar.mall2_catia_save[k], 'pdf')
             wc.close_drafting(self.full_save_dir, gvar.small2_catia_save[k], '.CATDrawing')
             # drafting_p.pdf_save(gvar.full_save_dir, gvar.small2_catia_save[k], 'pdf')
             wc.part_close()
